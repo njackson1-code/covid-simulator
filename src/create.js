@@ -31,7 +31,7 @@ class Create extends React.Component{
         }
 
         this.masks = document.getElementById("masks").checked;
-        alert(this.masks)
+       
         if (this.masks){
            
             this.masks = true;
@@ -42,8 +42,7 @@ class Create extends React.Component{
 
 
         this.numPeople = document.getElementById('numPeople').value;
-        console.log(this.numPeople )
-        console.log(Number.isInteger(this.numPeople))
+     
         if (isNaN(this.numPeople)){
             alert("Please enter number of people for simulation");
             return;
@@ -58,7 +57,7 @@ class Create extends React.Component{
         if (!this.assigned){
             return <div id = "graphArea"></div>;
         }
-        console.log(this.numPeople)
+       
 
         return (
         <div id = "graphArea">

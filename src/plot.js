@@ -144,13 +144,13 @@ class Plot extends React.Component {
             }
         }
         else if (childData.infected){
-            console.log("anto")
+          
             this.arrivedNodes = this.arrivedNodes + 1;
         }
         this.allNodes[childData.id] = childData;
 
         if (this.arrivedNodes == (this.numOfNodes)){
-            console.log("all aboard")
+           
             this.reset = true;
             this.arrivedNodes = 0;
             this.shouldUpdate = true;
