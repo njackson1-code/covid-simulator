@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#graphArea {
+  width: 80%;
+  height: 600;
+  margin-left: 10%;
+  box-sizing: border-box;
+  height: 500px;
+  border: 2px solid #eeeeee;
+  background-color: white;
+  position: relative;
+  margin-top: 6px;
+  transition-duration: 2;
+}
+
+#bottomBorder div {
+  width: 33.33%;
+  box-sizing: border-box;
+  float: left;
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  height: 25px;
+  margin-top: 5px;
+}
+
+
+#negativeCovid {
+  background-color: lightblue;
+}
+
+#positiveCovid {
+  background-color: red;
+}
+
+#recoveredCovid {
+  background-color: yellow;
+}
+
+
+.person {
+  width: 20px;
+  background-color: lightblue;
+  height: 20px;
+  border-radius: 50%;
+ 
+  position: absolute; 
+}
+
+#inputs {
+  width: 100%;
+  
+  position: relative;
+  text-align: center;
+  height: 40px;
+}
+
+#topBox{
+  box-shadow:         3px 3px 5px 6px #eee;
+  height: 200px;
+}
+
+#generate {
+  width: 100%;
+  position: relative;
+  padding-top: 140px;
+}
+
+
+
+
+#inputs div{
+  float: left;
+  position: relative;
+  width: 33%;
+}
+
+
+
+#socialDistance label{
+  position: relative;
+  margin-top: 100px;
+}
+
+#sd {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.person img{
+  width: 20px;
+  height: auto;
+  padding-top: 2.5px;
+}
+
+.person:hover {
+  transform: scale(2.7);
+  background-color: yellow;
+}
+
+.cough{
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background-color: yellow;
+  border: 1px solid black;
+  transition-duration: 2;
+  position: absolute;
+}
