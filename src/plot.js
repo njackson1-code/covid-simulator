@@ -10,6 +10,8 @@ class Plot extends React.Component {
         this.numOfNodes = props.numOfNodes;
         this.nodes = []
         this.passNodes = []
+
+        
         
         //dict for information being sent back
         this.allNodes = {}
@@ -33,7 +35,7 @@ class Plot extends React.Component {
         for (let i = 0; i < this.numOfMeetings; i ++){
             
             let x = Math.floor(1+Math.random() * 98);
-            let y = Math.floor(1+Math.random() * 98);
+            let y = Math.floor(2+Math.random() * 96);
             this.meetings[i] = {}
             this.meetings[i].x = x;
             this.meetings[i].y = y;
@@ -51,6 +53,8 @@ class Plot extends React.Component {
             let num = Math.floor(Math.random() * this.numOfMeetings);
             
                 this.nodeMeeting[idNum] = this.meetings[num];
+                this.nodeMeeting[idNum].x += (1 * Math.random() - 0.5)
+                this.nodeMeeting[idNum].y += (1 * Math.random() - 0.5)
                 
             
             
@@ -95,6 +99,7 @@ class Plot extends React.Component {
         }
         //checks for infecgting
         this.checkCollision();
+       
         //checks if every node has made it to meetings
         //this.updateMeetings();
         //if so, it changes meeting spots and makes the nodes move again
@@ -176,7 +181,7 @@ class Plot extends React.Component {
                     if ((this.allNodes[iid].infected || this.allNodes[jid].infected) && !(this.allNodes[iid].infected && this.allNodes[jid].infected)){
                         let check = Math.random();
                         
-                        if (check < this.infectionRate && this.distance(iid,jid) < 1){
+                        if (check < this.infectionRate && this.distance(iid,jid) < 2.5){
                             console.log("aqui")
                             this.allNodes[iid].infected = true;
                             this.allNodes[jid].infected = true;
@@ -217,7 +222,7 @@ class Plot extends React.Component {
 
         for (let i = 0; i < this.numOfMeetings; i ++){
             let x = Math.floor(1+Math.random() * 98);
-            let y = Math.floor(1+Math.random() * 98);
+            let y = Math.floor(2+Math.random() * 96);
             this.meetings[i] = {}
             this.meetings[i].x = x;
             this.meetings[i].y = y;
@@ -236,7 +241,7 @@ class Plot extends React.Component {
     RESET() {
         this.nodeMeeting = {}
         //this.nodes = []
-
+        
         for (let i = 0; i < this.numOfMeetings; i ++){
             let x = Math.floor(1+Math.random() * 98);
             let y = Math.floor(1+Math.random() * 98);
@@ -251,7 +256,9 @@ class Plot extends React.Component {
             this.passNodes[i] = idNum;
             let num = Math.floor(Math.random() * this.numOfMeetings);
             this.nodeMeeting[idNum] = this.meetings[num];
-            let iid = this.passNodes[i];   
+            
+            
+            
             
             
             
@@ -262,6 +269,7 @@ class Plot extends React.Component {
             
             //this.setState({nodes: this.nodes});
         }
+        console.log(this.nodeMeeting)
         
         //this.setState({nodes: this.nodes});
         

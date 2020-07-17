@@ -6,8 +6,8 @@ import { tsParenthesizedType, thisExpression } from '@babel/types';
 class Person extends React.Component{
     constructor(props){
         super(props)
-        this.xGoal = this.props.meeting['x'];
-        this.yGoal = this.props.meeting['y'];
+        this.xGoal = this.props.meeting['x']  + 2 * Math.random() - 1;
+        this.yGoal = this.props.meeting['y'] + 2 * Math.random() - 1;
         this.x = Math.floor(1+Math.random() * 98);
         this.y = Math.floor(1+Math.random() * 98);
         this.xStart = this.x;
@@ -218,8 +218,8 @@ class Person extends React.Component{
             
             this.arrived = false;
             this.first = true;
-            this.xGoal = this.props.meeting['x'];
-            this.yGoal = this.props.meeting['y'];
+            this.xGoal = this.props.meeting['x'] + 2 * Math.random() - 1;
+            this.yGoal = this.props.meeting['y'] + 2 * Math.random() - 1;
             this.xStart = this.x;
             this.yStart = this.y;
             this.arrived = false;

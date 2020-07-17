@@ -55,7 +55,7 @@ code {
   background-color: lightblue;
   height: 20px;
   border-radius: 50%;
- 
+ border: 1px solid white;
   position: absolute; 
 }
 
@@ -108,7 +108,7 @@ code {
 
 .person:hover {
   transform: scale(2.7);
-  background-color: yellow;
+  z-index: 3;
 }
 
 .cough{
