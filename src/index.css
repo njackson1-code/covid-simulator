@@ -46,7 +46,7 @@ code {
 }
 
 #recoveredCovid {
-  background-color: yellow;
+  background-color: #f8ed62;
 }
 
 
@@ -59,6 +59,11 @@ code {
   position: absolute; 
 }
 
+#title {
+  height: 75px;
+  font-size: 50px;
+}
+
 #inputs {
   width: 100%;
   
@@ -68,14 +73,15 @@ code {
 }
 
 #topBox{
+  
   box-shadow:         3px 3px 5px 6px #eee;
-  height: 200px;
+  height: 100px;
 }
 
 #generate {
   width: 100%;
   position: relative;
-  padding-top: 140px;
+  padding-top: 40px;
 }
 
 

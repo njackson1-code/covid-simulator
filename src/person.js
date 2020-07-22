@@ -36,14 +36,17 @@ class Person extends React.Component{
             this.cough = true;
         }
 
-        this.totalDistance = this.xGoal - this.xStart;
+        
+        this.totalDistance = Math.abs(this.xGoal - this.xStart);
         
     }
 
     convertTimeToX(time){
         let fractionTime = this.percent;
+        
         //console.log(this.totalDistance + this.x)
-        let x = (this.totalDistance) * fractionTime + this.x;
+        let x = (this.totalDistance) * fractionTime + this.xStart;
+       
         return x;
     }
 
@@ -77,7 +80,7 @@ class Person extends React.Component{
 
     recover(){
         let element = document.getElementById(this.id);
-        element.style.backgroundColor = 'yellow';
+        element.style.backgroundColor = '#f8ed62';
         this.recovered = true;
     }
 
@@ -125,7 +128,7 @@ class Person extends React.Component{
             this.y = this.yGoal;
             this.arrived = true;
             this.sendData();
-            this.totalDistance = this.xGoal - this.xStart;
+            this.totalDistance = Math.abs(this.xGoal - this.xStart);
             return;
         }
         else {

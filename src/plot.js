@@ -20,9 +20,9 @@ class Plot extends React.Component {
         this.taco = 0;
 
         if (props.masks){
-            this.infectionRate = 0.03;
+            this.infectionRate = 100;
         } else {
-            this.infectionRate = 0.3;
+            this.infectionRate = 25;
         }
 
         this.social = document.getElementById("sd").value/100;
@@ -45,6 +45,7 @@ class Plot extends React.Component {
 
         //stores the meeting spot for each specified node
         this.nodeMeeting = {}
+        this.interactionDuration = {}
         for (let i = 0; i < this.numOfNodes; i ++){
             let check = Math.random();
             let idNum = 'a' + i;
@@ -59,7 +60,8 @@ class Plot extends React.Component {
             
             
 
-            this.allNodes[idNum] = {}
+            this.allNodes[idNum] = {};
+            this.interactionDuration = {};
             this.allNodes[idNum].infected = false;
         }
 
@@ -88,29 +90,31 @@ class Plot extends React.Component {
     }
 
     
-
+    //function for checking if state of people need to be updated
     update(){
+        //should update is set to false
         this.shouldUpdate = false;
         this.done = false;
 
+        //if everything had just been reset, want to update
         if (this.justReset){
             this.shouldUpdate = true;
             this.justReset = false;
         }
-        //checks for infecgting
+
+        //checks for infections
         this.checkCollision();
        
         //checks if every node has made it to meetings
         //this.updateMeetings();
         //if so, it changes meeting spots and makes the nodes move again
         if (this.reset){
-            
-            let pp = this.RESET();
+            this.RESET();
             this.shouldUpdate = true;
-            
         }
+
         //sets state to render everything
-        
+        //updates Components then renders them
         if (this.shouldUpdate){
             this.updateComponents();
             this.setState({nodes: this.nodes});
@@ -124,7 +128,7 @@ class Plot extends React.Component {
     }
 
 
-
+    //updates Components with most recent data of all people
     updateComponents(){
         for (let i = 0; i < this.numOfNodes; i ++){
             let iid = 'a' + i;
@@ -137,25 +141,33 @@ class Plot extends React.Component {
         this.reset = false;
     }
 
+
+    //distance between two people
     distance(x,y){
-        
         return Math.sqrt(Math.pow(this.allNodes[x].x - this.allNodes[y].x,2) + Math.pow(this.allNodes[x].y - this.allNodes[y].y, 2));
     }
     
+
+    //funciton to return data from people
     callbackFunction = (childData) => {
+        //if id of person already stored, but newly arrived, increment
         if (childData.id in this.allNodes){
-            if (!this.allNodes[childData.id].arrived && childData.arrived){console.log("anto")
+            if (!this.allNodes[childData.id].arrived && childData.arrived){
                 this.arrivedNodes = this.arrivedNodes + 1;
             }
         }
-        else if (childData.infected){
+        //else if not saved data but the person has arrived, increment
+        else if (childData.arrived){
           
             this.arrivedNodes = this.arrivedNodes + 1;
         }
+
+        //saved most recent data
         this.allNodes[childData.id] = childData;
 
+
+        //if all arrived, must reset
         if (this.arrivedNodes == (this.numOfNodes)){
-           
             this.reset = true;
             this.arrivedNodes = 0;
             this.shouldUpdate = true;
@@ -173,27 +185,50 @@ class Plot extends React.Component {
                 let iid = this.passNodes[i];
                 let jid = this.passNodes[j];
                 
-                if (this.allNodes[iid].recovered || this.allNodes[jid].recovered){
+                if (this.allNodes[iid].recovered || this.allNodes[jid].recovered || i == j || (this.allNodes[iid].infected && this.allNodes[jid].infected)){
                     continue;
                 }
+
+                if (!this.allNodes[iid].infected && !this.allNodes[jid].infected){
+                    continue;
+                }
+
+                let healthyid = iid;
+                if (!this.allNodes[jid].infected){
+                    healthyid = jid;
+                }
                 
-                if (i != j){
+                if (iid == 'a1'){
+                   //console.log(this.allNodes[iid].x);
+                }
+                if (this.distance(iid,jid) < 2.5){
+                    
+                    this.interactionDuration[healthyid] += 1;
+                    let check = Math.random();
+                    if (check < (this.interactionDuration[healthyid]/this.infectionRate)){
+                        console.log("sick")
+                        this.allNodes[healthyid].infected = true;
+                            //this.allNodes[jid].infected = true;
+                            this.shouldUpdate = true;
+                    }
+                } 
+                else {
+                    this.interactionDuration[healthyid] = 0;
+                }
+                
+                /* if (i != j){
                     if ((this.allNodes[iid].infected || this.allNodes[jid].infected) && !(this.allNodes[iid].infected && this.allNodes[jid].infected)){
                         let check = Math.random();
                         
                         if (check < this.infectionRate && this.distance(iid,jid) < 2.5){
-                            console.log("aqui")
+                            //if it makes one sick, it want to update it
                             this.allNodes[iid].infected = true;
                             this.allNodes[jid].infected = true;
                             this.shouldUpdate = true;
-                            //console.log(JSON.stringify(this.nodes[i]))
-                            
-                            //n//odes[i].infect();
-                            //nodes[j].infect();
                         }
                     }
                     
-                }
+                } */
             }
             if (this.allNodes[this.passNodes[i]].infected) {
                 sum = sum + 1;

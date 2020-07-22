@@ -12,6 +12,10 @@ function App() {
   return (
     <>
       <div className="App">
+        <div id = "title">
+          Covid Visualizer
+        </div>
+        
         <div id = "topBox">
           <div id = "inputs">
             <div id = "people">
