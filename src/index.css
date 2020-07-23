@@ -22,7 +22,7 @@ code {
   background-color: white;
   position: relative;
   margin-top: 6px;
-  transition-duration: 2;
+  
 }
 
 #bottomBorder div {
@@ -124,5 +124,14 @@ code {
   background-color: yellow;
   border: 1px solid black;
   transition-duration: 2;
+  position: absolute;
+}
+
+.transmit{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid red;
+  
   position: absolute;
 }

@@ -102,7 +102,7 @@ class Person extends React.Component{
         this.social = document.getElementById("sd").value/100;
         this.time += 50;
         //console.log(this.time)
-        let element = document.getElementById(this.id)
+        
         this.setState({
             date: new Date()
         });
@@ -215,6 +215,7 @@ class Person extends React.Component{
         if (this.props.infected && !this.infected){
             this.infected = this.props.infected;
             this.cough = true;
+            
         }
        
         if (this.props.reset) {
@@ -234,7 +235,7 @@ class Person extends React.Component{
     render() {
         
        
-      
+       
         if (this.masks){
            
             return (

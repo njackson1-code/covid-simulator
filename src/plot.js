@@ -1,5 +1,6 @@
 import React from 'react';
 import Person from './person.js';
+import Transmit from './transmit.js';
 import { tsThisType } from '@babel/types';
 
 class Plot extends React.Component {
@@ -77,6 +78,10 @@ class Plot extends React.Component {
         //infecting one of them
         this.nodes[0] = <Person masks = {props.masks} infected = {true} social = {this.social} id={'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting['a0']} parentCallback = {this.callbackFunction} key={'a0'}/>
         this.state = {nodes: this.nodes};
+
+
+        //transmission graphics
+        this.transmissions = [];
     }
 
     componentDidMount() {
@@ -210,6 +215,14 @@ class Plot extends React.Component {
                         this.allNodes[healthyid].infected = true;
                             //this.allNodes[jid].infected = true;
                             this.shouldUpdate = true;
+
+                        let ind = this.transmissions.length;
+                        this.transmissions.push(<Transmit key = {"tm" + healthyid} id = {"tm" + healthyid} x={this.allNodes[healthyid].x} y={this.allNodes[healthyid].y}/>);
+                        setTimeout(() => {
+                            delete this.transmissions[ind];
+                            this.setState({nodes: this.nodes});
+                            console.log("Fade");
+                        }, 1500);
                     }
                 } 
                 else {
@@ -353,8 +366,8 @@ class Plot extends React.Component {
         }
 
        
-        //console.log(this.state.nodes)
-        //console.log(this.nodes)
+        console.log(this.state.nodes)
+        console.log(this.transmissions)
         if (this.allSick){
             return (<div>
                 All Sick
@@ -362,7 +375,9 @@ class Plot extends React.Component {
         }
         return ( 
             <div>
-                {this.state.nodes}
+                <div>{this.state.nodes}</div>
+                
+                <div>{this.transmissions}</div>
             </div>
            
         )
