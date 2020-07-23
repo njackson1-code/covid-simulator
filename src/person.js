@@ -108,6 +108,11 @@ class Person extends React.Component{
         });
 
         if (this.arrived){
+            if (this.infected == true  && !this.recovered){
+                if (document.getElementById(this.id).backgroundColor != 'red'){
+                    this.infect()
+                }
+            }
             return;
         }
 
