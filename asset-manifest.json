@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/covid-simulator/static/css/main.546021f4.chunk.css",
-    "main.js": "/covid-simulator/static/js/main.55b79fed.chunk.js",
-    "main.js.map": "/covid-simulator/static/js/main.55b79fed.chunk.js.map",
+    "main.css": "/covid-simulator/static/css/main.b485a67b.chunk.css",
+    "main.js": "/covid-simulator/static/js/main.63614a04.chunk.js",
+    "main.js.map": "/covid-simulator/static/js/main.63614a04.chunk.js.map",
     "runtime-main.js": "/covid-simulator/static/js/runtime-main.8af1a212.js",
     "runtime-main.js.map": "/covid-simulator/static/js/runtime-main.8af1a212.js.map",
-    "static/js/2.4b5a8561.chunk.js": "/covid-simulator/static/js/2.4b5a8561.chunk.js",
-    "static/js/2.4b5a8561.chunk.js.map": "/covid-simulator/static/js/2.4b5a8561.chunk.js.map",
+    "static/js/2.7c006500.chunk.js": "/covid-simulator/static/js/2.7c006500.chunk.js",
+    "static/js/2.7c006500.chunk.js.map": "/covid-simulator/static/js/2.7c006500.chunk.js.map",
     "index.html": "/covid-simulator/index.html",
-    "precache-manifest.4e369c92c2b66cf505895b5eb080ad27.js": "/covid-simulator/precache-manifest.4e369c92c2b66cf505895b5eb080ad27.js",
+    "precache-manifest.cfc9d1df4f2a20187426078ffdcdd704.js": "/covid-simulator/precache-manifest.cfc9d1df4f2a20187426078ffdcdd704.js",
     "service-worker.js": "/covid-simulator/service-worker.js",
-    "static/css/main.546021f4.chunk.css.map": "/covid-simulator/static/css/main.546021f4.chunk.css.map",
-    "static/js/2.4b5a8561.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.4b5a8561.chunk.js.LICENSE.txt",
+    "static/css/main.b485a67b.chunk.css.map": "/covid-simulator/static/css/main.b485a67b.chunk.css.map",
+    "static/js/2.7c006500.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.7c006500.chunk.js.LICENSE.txt",
     "static/media/coronavirus.png": "/covid-simulator/static/media/coronavirus.a625a7c2.png",
     "static/media/logo.svg": "/covid-simulator/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8af1a212.js",
-    "static/js/2.4b5a8561.chunk.js",
-    "static/css/main.546021f4.chunk.css",
-    "static/js/main.55b79fed.chunk.js"
+    "static/js/2.7c006500.chunk.js",
+    "static/css/main.b485a67b.chunk.css",
+    "static/js/main.63614a04.chunk.js"
   ]
 }
