@@ -139,6 +139,8 @@ class Person extends React.Component{
             this.arrived = true;
             this.sendData();
             this.totalDistance = Math.abs(this.xGoal - this.xStart);
+            let element = document.getElementById("title");
+            element.innerHTML = this.id;
             return;
         }
         else {
@@ -161,7 +163,7 @@ class Person extends React.Component{
                }
                this.recovr = setTimeout(
                 () => this.check(),
-                22500
+                7000
             );
 
                 let element = document.getElementById(this.id);
