@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/covid-simulator/static/css/main.b485a67b.chunk.css",
-    "main.js": "/covid-simulator/static/js/main.6155a841.chunk.js",
-    "main.js.map": "/covid-simulator/static/js/main.6155a841.chunk.js.map",
+    "main.js": "/covid-simulator/static/js/main.4311da28.chunk.js",
+    "main.js.map": "/covid-simulator/static/js/main.4311da28.chunk.js.map",
     "runtime-main.js": "/covid-simulator/static/js/runtime-main.8af1a212.js",
     "runtime-main.js.map": "/covid-simulator/static/js/runtime-main.8af1a212.js.map",
     "static/js/2.7c006500.chunk.js": "/covid-simulator/static/js/2.7c006500.chunk.js",
     "static/js/2.7c006500.chunk.js.map": "/covid-simulator/static/js/2.7c006500.chunk.js.map",
     "index.html": "/covid-simulator/index.html",
-    "precache-manifest.bd354174563ed29b41ddf2977eee0fdb.js": "/covid-simulator/precache-manifest.bd354174563ed29b41ddf2977eee0fdb.js",
+    "precache-manifest.4466960192c664d49535230766ef60f6.js": "/covid-simulator/precache-manifest.4466960192c664d49535230766ef60f6.js",
     "service-worker.js": "/covid-simulator/service-worker.js",
     "static/css/main.b485a67b.chunk.css.map": "/covid-simulator/static/css/main.b485a67b.chunk.css.map",
     "static/js/2.7c006500.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.7c006500.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.8af1a212.js",
     "static/js/2.7c006500.chunk.js",
     "static/css/main.b485a67b.chunk.css",
-    "static/js/main.6155a841.chunk.js"
+    "static/js/main.4311da28.chunk.js"
   ]
 }
