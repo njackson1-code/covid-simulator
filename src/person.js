@@ -98,9 +98,7 @@ class Person extends React.Component{
         this.x = complete;
     }
 
-    check(){
-        alert(this.percent);
-    }
+   
 
     
     updatePosition(){
@@ -137,6 +135,7 @@ class Person extends React.Component{
             this.x = this.xGoal;
             this.y = this.yGoal;
             this.arrived = true;
+
             this.sendData();
             this.totalDistance = Math.abs(this.xGoal - this.xStart);
             //let element = document.getElementById("title");
@@ -217,6 +216,10 @@ class Person extends React.Component{
         send['cough'].x = this.x;
         send['cough'].y = this.x;
         send['recovered'] = this.recovered;
+        if (this.arrived){
+            send['percent'] = this.percent;
+        }
+        
         this.props.parentCallback(send);
     };
 

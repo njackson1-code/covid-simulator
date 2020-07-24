@@ -156,14 +156,18 @@ class Plot extends React.Component {
     //funciton to return data from people
     callbackFunction = (childData) => {
         //if id of person already stored, but newly arrived, increment
-        if (childData.id in this.allNodes && childData.arrived){
+       // if (childData.id in this.allNodes && childData.arrived){
             //if (!this.allNodes[childData.id].arrived && childData.arrived){
-                this.arrivedNodes = this.arrivedNodes + 1;
+         //       this.arrivedNodes = this.arrivedNodes + 1;
             //}
-        }
+        //}
         //else if not saved data but the person has arrived, increment
-        else if (childData.arrived){
+        //else if (childData.arrived){
           
+          //  this.arrivedNodes = this.arrivedNodes + 1;
+       // }
+
+        if ('percent' in childData){
             this.arrivedNodes = this.arrivedNodes + 1;
         }
 
