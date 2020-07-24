@@ -169,14 +169,15 @@ class Plot extends React.Component {
 
         //saved most recent data
         this.allNodes[childData.id] = childData;
-
+        let element = document.getElementById("title");
+        element.innerHTML = this.arrivedNodes;
 
         //if all arrived, must reset
         if (this.arrivedNodes == (this.numOfNodes)){
             this.reset = true;
             this.arrivedNodes = 0;
             this.shouldUpdate = true;
-            alert("all arrived")
+           
         }
 
         this.allSick = false;
