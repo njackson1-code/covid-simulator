@@ -149,11 +149,16 @@ class Person extends React.Component{
                    this.yGoal = this.y;
                    let element = document.getElementById(this.id);
                 element.style.left = this.x + "%";
-                
+            
 
                 element.style.top = this.y + '%';
                    return;
                }
+               this.recovr = setTimeout(
+                () => alert(this.percent),
+                22500
+            );
+
                 let element = document.getElementById(this.id);
 
                 element.style.left = this.x + "%";
