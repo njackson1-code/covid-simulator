@@ -168,6 +168,7 @@ class Plot extends React.Component {
        // }
 
         if ('percent' in childData){
+            alert(childData.id)
             this.arrivedNodes = this.arrivedNodes + 1;
         }
 

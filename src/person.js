@@ -217,6 +217,7 @@ class Person extends React.Component{
         send['cough'].y = this.x;
         send['recovered'] = this.recovered;
         if (this.arrived){
+            alert(this.id)
             send['percent'] = this.percent;
         }
         
