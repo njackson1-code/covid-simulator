@@ -2,6 +2,7 @@ import React from 'react';
 import Cough from './cough.js';
 import Mask from './coronavirus.png';
 import { tsParenthesizedType, thisExpression } from '@babel/types';
+import { checkServerIdentity } from 'tls';
 
 class Person extends React.Component{
     constructor(props){
@@ -97,6 +98,10 @@ class Person extends React.Component{
         this.x = complete;
     }
 
+    check(){
+        alert(this.percent);
+    }
+
     
     updatePosition(){
         this.social = document.getElementById("sd").value/100;
@@ -155,7 +160,7 @@ class Person extends React.Component{
                    return;
                }
                this.recovr = setTimeout(
-                () => alert(this.percent),
+                () => this.check(),
                 22500
             );
 
