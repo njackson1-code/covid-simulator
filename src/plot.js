@@ -176,6 +176,7 @@ class Plot extends React.Component {
             this.reset = true;
             this.arrivedNodes = 0;
             this.shouldUpdate = true;
+            alert("all arrived")
         }
 
         this.allSick = false;
