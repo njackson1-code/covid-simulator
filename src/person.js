@@ -1,12 +1,14 @@
 import React from 'react';
 import Cough from './cough.js';
 import Mask from './coronavirus.png';
+import Angel from './angel.png';
 import { tsParenthesizedType, thisExpression } from '@babel/types';
 import { checkServerIdentity } from 'tls';
 
 class Person extends React.Component{
     constructor(props){
         super(props)
+        
         this.xGoal = this.props.meeting['x']  + 2 * Math.random() - 1;
         this.yGoal = this.props.meeting['y'] + 2 * Math.random() - 1;
         this.x = Math.floor(1+Math.random() * 98);
@@ -17,6 +19,7 @@ class Person extends React.Component{
         this.social = props.social;
         this.infected = props.infected;
         this.masks = props.masks;
+        this.angel = false;
         
         if (this.id == 'a0'){
             this.infected = true;
@@ -56,6 +59,7 @@ class Person extends React.Component{
     }
 
     componentDidMount() {
+        
         this.updatePosition();
         this.timerID = setInterval(
           () => this.updatePosition(),
@@ -64,6 +68,14 @@ class Person extends React.Component{
 
     }
 
+    stopMovement(){
+        clearInterval(this.timerID);
+        let element = document.getElementById(this.id);
+        element.velocity("stop", true);
+    }
+
+
+
     
 
     getX(){
@@ -71,20 +83,61 @@ class Person extends React.Component{
     }
 
     infect() {
+        
+        
         let element = document.getElementById(this.id);
         element.style.backgroundColor = 'red';
         this.recoverTimer = setTimeout(
             () => this.recover(),
             22500
         );
+        this.setState({
+            date: new Date()
+        });
     }
 
     recover(){
-        let element = document.getElementById(this.id);
-        element.style.backgroundColor = '#f8ed62';
+        
+        if (this.recovered){
+            return;
+        }
         this.recovered = true;
+        let check = Math.random();
+        let color = '#f8ed62';
+        if (check <= 0.01){
+            this.angel = true;
+            color = 'white';
+            //this.stopMovement();
+            this.floatingAngel();
+        }
+        let element = document.getElementById(this.id);
+        element.style.backgroundColor = color;
+        this.setState({
+            date: new Date()
+        });
     }
 
+
+    floatingAngel(){
+        this.yGoal = -200;
+        let element = document.getElementById(this.id);
+        this.arrived = true;
+        this.x = this.convertTimeToX(this.time);
+        this.sendData();
+        element.velocity("stop", true);
+        element.velocity({
+            left: this.x + '%',
+            top: this.yGoal + '%'
+          
+
+        },
+        {duration: 12500
+           
+    
+        },
+
+        );
+    }
     equation(x){
         return this.slope(this.xStart,this.yStart) * (x - this.xStart) + this.yStart;
     }
@@ -94,7 +147,6 @@ class Person extends React.Component{
     }
 
     otherFunction(complete){
-        
         this.x = complete;
     }
 
@@ -102,6 +154,19 @@ class Person extends React.Component{
 
     
     updatePosition(){
+        if (this.angel){
+            this.arrived = true;
+            this.sendData();
+            return;
+        }
+        if (this.allSick){
+            this.stopMovement();
+            if (this.infected && !this.recovered){
+                this.infect();
+            }
+
+            return;
+        }
         this.social = document.getElementById("sd").value/100;
         this.time += 50;
         //console.log(this.time)
@@ -112,7 +177,7 @@ class Person extends React.Component{
 
         if (this.arrived){
             if (this.infected == true  && !this.recovered){
-                if (document.getElementById(this.id).backgroundColor != 'red'){
+                if (document.getElementById(this.id).style.backgroundColor != 'red' || document.getElementById(this.id).style.backgroundColor != 'white' || document.getElementById(this.id).style.backgroundColor != '#f8ed62'){
                     this.infect()
                 }
             }
@@ -125,9 +190,12 @@ class Person extends React.Component{
       
 
         
-        if (this.infected == true  && !this.recovered){
-            if (document.getElementById(this.id).backgroundColor != 'red'){
-                this.infect()
+        if (this.infected && !this.recovered){
+            
+            if (this.infected == true  && !this.recovered){
+                if (document.getElementById(this.id).style.backgroundColor != 'red' || document.getElementById(this.id).style.backgroundColor != 'white' || document.getElementById(this.id).style.backgroundColor != '#f8ed62'){
+                    this.infect()
+                }
             }
         }
         
@@ -144,11 +212,15 @@ class Person extends React.Component{
         }
         else {
             this.sendData();
+            
         }
         var self = this;
         
             if (this.first){
                let check = Math.random();
+               if (this.id == 'a0'){
+                   console.log("reset velocity");
+               }
                if (check < this.social){
                    this.percent = 1;
                    this.xGoal = this.x;
@@ -216,6 +288,7 @@ class Person extends React.Component{
         send['cough'].x = this.x;
         send['cough'].y = this.x;
         send['recovered'] = this.recovered;
+        
         if (this.arrived){
             
             send['percent'] = this.percent;
@@ -229,8 +302,10 @@ class Person extends React.Component{
     componentDidUpdate(prevProps) {
         
         
-        //this.recovered = this.props.recovered;
-        if (this.props.infected && !this.infected){
+        this.allSick = this.props.allSick;
+        
+        if (this.props.infected){
+           
             this.infected = this.props.infected;
             this.cough = true;
             
@@ -253,7 +328,13 @@ class Person extends React.Component{
     render() {
         
        
-       
+        if (this.angel){
+            return (
+                <div id = {this.id} className = "person">
+                    <img className = 'angel' src = {Angel}></img>
+                </div>
+            )
+        }
         if (this.masks){
            
             return (

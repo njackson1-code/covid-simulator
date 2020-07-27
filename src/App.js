@@ -15,11 +15,12 @@ function App() {
         <div id = "title">
           Covid Visualizer
         </div>
-        
+
         <div id = "topBox">
           <div id = "inputs">
             <div id = "people">
-              <input id = "numPeople" placeholder="Number of people"></input>
+              <input id = "numPeople" placeholder="100"></input>
+              <label>Number of People</label>
             </div>
             
             <div id = "socialDistance">
@@ -29,8 +30,8 @@ function App() {
             
 
             <div>
-              <input id = "masks" type="checkbox"></input>
-              <label>Masks?</label>
+              <input id = {"masks"} type="checkbox"></input>
+              <label>Masks</label>
             </div>
             
           </div>

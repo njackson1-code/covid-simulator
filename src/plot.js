@@ -71,14 +71,15 @@ class Plot extends React.Component {
         this.nodes = this.nodes.map((item)=> {
             
             return (
-                <Person  masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
+                <Person  allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
             )
         })
+       
         
         //infecting one of them
-        this.nodes[0] = <Person masks = {props.masks} infected = {true} social = {this.social} id={'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting['a0']} parentCallback = {this.callbackFunction} key={'a0'}/>
+        this.nodes[0] = <Person allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting['a0']} parentCallback = {this.callbackFunction} key={'a0'}/>
         this.state = {nodes: this.nodes};
-
+       
 
         //transmission graphics
         this.transmissions = [];
@@ -137,7 +138,7 @@ class Plot extends React.Component {
     updateComponents(){
         for (let i = 0; i < this.numOfNodes; i ++){
             let iid = 'a' + i;
-            this.nodes[i] = <Person infected = {this.allNodes[iid].infected} recovered = {this.allNodes[iid].recovered} reset = {this.reset} id={iid} meeting={this.nodeMeeting[iid]} parentCallback = {this.callbackFunction} key={iid}/>
+            this.nodes[i] = <Person allSick = {this.allSick} infected = {this.allNodes[iid].infected} recovered = {this.allNodes[iid].recovered} reset = {this.reset} id={iid} meeting={this.nodeMeeting[iid]} parentCallback = {this.callbackFunction} key={iid}/>
         }
         this.shouldUpdate = false;
     }
@@ -166,17 +167,17 @@ class Plot extends React.Component {
           
           //  this.arrivedNodes = this.arrivedNodes + 1;
        // }
-
+        
         if ('percent' in childData){
-            console.log(this.arrivedNodes)
+            
             this.arrivedNodes = this.arrivedNodes + 1;
         }
 
         //saved most recent data
         this.allNodes[childData.id] = childData;
         let element = document.getElementById("title");
-        element.innerHTML = this.arrivedNodes;
-
+        //element.innerHTML = this.arrivedNodes;
+        
         //if all arrived, must reset
         if (this.arrivedNodes == (this.numOfNodes)){
             this.reset = true;
@@ -190,7 +191,7 @@ class Plot extends React.Component {
     };
     
     checkCollision(){
-        let sum = 0;
+        let sum = 0; let untouched = 0; let recov = 0;
        
         for (let i = 0; i < this.nodes.length; i ++){
             for (let j = 0; j < this.nodes.length; j ++){
@@ -198,13 +199,15 @@ class Plot extends React.Component {
                 let jid = this.passNodes[j];
                 
                 if (this.allNodes[iid].recovered || this.allNodes[jid].recovered || i == j || (this.allNodes[iid].infected && this.allNodes[jid].infected)){
+                    
                     continue;
                 }
-
+                
                 if (!this.allNodes[iid].infected && !this.allNodes[jid].infected){
+                    
                     continue;
                 }
-
+                
                 let healthyid = iid;
                 if (!this.allNodes[jid].infected){
                     healthyid = jid;
@@ -213,12 +216,13 @@ class Plot extends React.Component {
                 if (iid == 'a1'){
                    //console.log(this.allNodes[iid].x);
                 }
+                
                 if (this.distance(iid,jid) < 2.5){
                     
                     this.interactionDuration[healthyid] += 1;
                     let check = Math.random();
                     if (check < (this.interactionDuration[healthyid]/this.infectionRate)){
-                        console.log("sick")
+                        
                         this.allNodes[healthyid].infected = true;
                             //this.allNodes[jid].infected = true;
                             this.shouldUpdate = true;
@@ -228,7 +232,7 @@ class Plot extends React.Component {
                         setTimeout(() => {
                             delete this.transmissions[ind];
                             this.setState({nodes: this.nodes});
-                            console.log("Fade");
+                            
                         }, 1500);
                     }
                 } 
@@ -250,13 +254,20 @@ class Plot extends React.Component {
                     
                 } */
             }
-            if (this.allNodes[this.passNodes[i]].infected) {
+            if (!this.allNodes[this.passNodes[i]].infected && !this.allNodes[this.passNodes[i]].recovered){
+                untouched = untouched + 1;
+            }
+            if (this.allNodes[this.passNodes[i]].infected && !this.allNodes[this.passNodes[i]].recovered) {
                 sum = sum + 1;
+            }
+            if (this.allNodes[this.passNodes[i]].recovered){
+                recov = recov + 1;
             }
         }
 
-        if (sum == this.numOfNodes){
+        if (sum == this.numOfNodes || untouched == 0 || (untouched + recov == this.numOfNodes)){
             this.allSick = true;
+            this.message = "Immunity Reached. No one else to spread disease to."
         }
         
     }
@@ -324,7 +335,7 @@ class Plot extends React.Component {
             
             //this.setState({nodes: this.nodes});
         }
-        console.log(this.nodeMeeting)
+       
         
         //this.setState({nodes: this.nodes});
         
@@ -373,19 +384,35 @@ class Plot extends React.Component {
         }
 
        
-        console.log(this.state.nodes)
-        console.log(this.transmissions)
+        console.log(this.state.nodes.length)
         if (this.allSick){
-            return (<div>
-                All Sick
-            </div>)
+            clearInterval(this.timerID);
+            
+            return (
+            
+           
+            <>  
+                {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
+                <div>
+                
+                    <div>{this.state.nodes}</div>
+                    
+                    <div>{this.transmissions}</div>
+                </div>
+            </>
+            
+            )
         }
+        
         return ( 
+            <>
+            {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
             <div>
                 <div>{this.state.nodes}</div>
                 
                 <div>{this.transmissions}</div>
             </div>
+            </>
            
         )
     }

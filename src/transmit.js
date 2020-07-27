@@ -8,7 +8,7 @@ class Transmit extends React.Component{
         this.id = props.id;
         this.x = props.x;
         this.y = props.y;
-        console.log("aqui")
+      
     }
 
     componentDidMount() {
