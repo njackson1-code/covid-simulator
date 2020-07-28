@@ -78,11 +78,15 @@ code {
   height: 100px;
 }
 
-#generate {
+#generate, #reset {
   width: 100%;
   position: relative;
   z-index: 4;
   top: -2px;
+}
+
+#reset {
+  z-index: 5;
 }
 
 #generate button {
@@ -196,4 +200,27 @@ border-bottom-left-radius:15%;
   border: 1px solid red;
   
   position: absolute;
+}
+
+
+
+#endmsg {
+  background-color: yellow;
+  width: 30%;
+  height: auto;
+  z-index: 6;
+  border-radius: 5%;
+  position: relative;
+  margin-left: 35%;
+  margin-top: 20%;
+}
+
+#overshadow {
+  position: fixed;
+  display: none;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
 }

@@ -20,8 +20,9 @@ class Person extends React.Component{
         this.infected = props.infected;
         this.masks = props.masks;
         this.angel = false;
+        this.deathRate = 1;
         
-        if (this.id == 'a0'){
+        if (this.id == this.key + 'a0'){
             this.infected = true;
         }
         this.state = {date: new Date()};
@@ -30,7 +31,7 @@ class Person extends React.Component{
         this.recovered = false;
 
         this.first = true;
-        
+        this.infex = false;
 
         
         this.time = 0;
@@ -41,7 +42,7 @@ class Person extends React.Component{
         }
 
         
-        this.totalDistance = Math.abs(this.xGoal - this.xStart);
+        this.totalDistance = this.xGoal - this.xStart;
         
     }
 
@@ -68,10 +69,19 @@ class Person extends React.Component{
 
     }
 
+    componentWillUnmount(){
+        //console.log(this.id)
+        clearInterval(this.timerID);
+        clearTimeout(this.recoverTimer);
+    }
+
     stopMovement(){
         clearInterval(this.timerID);
         let element = document.getElementById(this.id);
-        element.velocity("stop", true);
+        if (!this.angel){
+            element.velocity("stop", true);
+        }
+        
     }
 
 
@@ -84,9 +94,10 @@ class Person extends React.Component{
 
     infect() {
         
-        
+        this.infex = true;
         let element = document.getElementById(this.id);
         element.style.backgroundColor = 'red';
+        console.log(this.id)
         this.recoverTimer = setTimeout(
             () => this.recover(),
             22500
@@ -104,7 +115,7 @@ class Person extends React.Component{
         this.recovered = true;
         let check = Math.random();
         let color = '#f8ed62';
-        if (check <= 0.01){
+        if (check <= this.deathRate){
             this.angel = true;
             color = 'white';
             //this.stopMovement();
@@ -154,11 +165,7 @@ class Person extends React.Component{
 
     
     updatePosition(){
-        if (this.angel){
-            this.arrived = true;
-            this.sendData();
-            return;
-        }
+        
         if (this.allSick){
             this.stopMovement();
             if (this.infected && !this.recovered){
@@ -177,23 +184,32 @@ class Person extends React.Component{
 
         if (this.arrived){
             if (this.infected == true  && !this.recovered){
-                if (document.getElementById(this.id).style.backgroundColor != 'red' || document.getElementById(this.id).style.backgroundColor != 'white' || document.getElementById(this.id).style.backgroundColor != '#f8ed62'){
+                if (!this.infex){
                     this.infect()
                 }
             }
             return;
         }
+        else if (this.angel){
+            if (this.angel){
+                this.arrived = true;
+                this.sendData();
+                return;
+            }
+        }
 
        this.x = this.convertTimeToX(this.time);
        this.y = this.equation(this.x);
 
+        if (this.id == '1a0'){
+            console.log(this.y);
+        }
       
-
         
         if (this.infected && !this.recovered){
             
             if (this.infected == true  && !this.recovered){
-                if (document.getElementById(this.id).style.backgroundColor != 'red' || document.getElementById(this.id).style.backgroundColor != 'white' || document.getElementById(this.id).style.backgroundColor != '#f8ed62'){
+                if (!this.infex){
                     this.infect()
                 }
             }
@@ -205,7 +221,8 @@ class Person extends React.Component{
             this.arrived = true;
 
             this.sendData();
-            this.totalDistance = Math.abs(this.xGoal - this.xStart);
+            
+            
             //let element = document.getElementById("title");
             //element.innerHTML = this.id;
             return;
@@ -219,7 +236,7 @@ class Person extends React.Component{
             if (this.first){
                let check = Math.random();
                if (this.id == 'a0'){
-                   console.log("reset velocity");
+                   //console.log("reset velocity");
                }
                if (check < this.social){
                    this.percent = 1;
@@ -257,7 +274,7 @@ class Person extends React.Component{
                 );
 
                 
-                 this.time = 0;
+                 this.percent = 0;
 
                  
             }
@@ -321,7 +338,7 @@ class Person extends React.Component{
             this.yStart = this.y;
             this.arrived = false;
             this.percent = 0;
-            
+            this.totalDistance = this.xGoal - this.xStart;
         }
     }
 

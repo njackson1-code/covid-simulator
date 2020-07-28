@@ -11,6 +11,7 @@ class Plot extends React.Component {
         this.numOfNodes = props.numOfNodes;
         this.nodes = []
         this.passNodes = []
+        this.key = props.id;
 
         
         
@@ -49,7 +50,7 @@ class Plot extends React.Component {
         this.interactionDuration = {}
         for (let i = 0; i < this.numOfNodes; i ++){
             let check = Math.random();
-            let idNum = 'a' + i;
+            let idNum = this.key + 'a' + i;
             this.nodes[i] =  idNum;
             this.passNodes[i] = idNum;
             let num = Math.floor(Math.random() * this.numOfMeetings);
@@ -77,7 +78,7 @@ class Plot extends React.Component {
        
         
         //infecting one of them
-        this.nodes[0] = <Person allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting['a0']} parentCallback = {this.callbackFunction} key={'a0'}/>
+        this.nodes[0] = <Person allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
         this.state = {nodes: this.nodes};
        
 
@@ -137,7 +138,7 @@ class Plot extends React.Component {
     //updates Components with most recent data of all people
     updateComponents(){
         for (let i = 0; i < this.numOfNodes; i ++){
-            let iid = 'a' + i;
+            let iid = this.key + 'a' + i;
             this.nodes[i] = <Person allSick = {this.allSick} infected = {this.allNodes[iid].infected} recovered = {this.allNodes[iid].recovered} reset = {this.reset} id={iid} meeting={this.nodeMeeting[iid]} parentCallback = {this.callbackFunction} key={iid}/>
         }
         this.shouldUpdate = false;
@@ -172,7 +173,7 @@ class Plot extends React.Component {
             
             this.arrivedNodes = this.arrivedNodes + 1;
         }
-
+        
         //saved most recent data
         this.allNodes[childData.id] = childData;
         let element = document.getElementById("title");
@@ -318,7 +319,7 @@ class Plot extends React.Component {
 
 
         for (let i = 0; i < this.numOfNodes; i ++){
-            let idNum = 'a' + i;
+            let idNum =  this.key + 'a' + i;
             this.passNodes[i] = idNum;
             let num = Math.floor(Math.random() * this.numOfMeetings);
             this.nodeMeeting[idNum] = this.meetings[num];
@@ -384,10 +385,10 @@ class Plot extends React.Component {
         }
 
        
-        console.log(this.state.nodes.length)
+        
         if (this.allSick){
             clearInterval(this.timerID);
-            
+            document.getElementById("overshadow").style.display = 'block';
             return (
             
            

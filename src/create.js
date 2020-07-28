@@ -8,7 +8,7 @@ class Create extends React.Component{
         this.state = ({numOfCreations: 0});
         this.numOfCreations = 0;
         this.assigned = false;
-        
+        this.clicked = false;
         //this.numPeople = document.getElementById('numPeople').value;
     }
 
@@ -19,16 +19,24 @@ class Create extends React.Component{
         //this.numPeople = document.getElementById('numPeople').value;
         let self = this;
         document.addEventListener('click', this.generate);
-
+        
        
         //btn.onClick = this.generate();
     }
 
     generate = event =>{
         
-        if (event.target.id != 'GenerateSimulation'){
+        if (event.target.id == 'ResetSimulation'){
+            this.reset();
+            
             return;
         }
+
+        if (event.target.id != 'GenerateSimulation' || this.clicked){
+            return;
+        }
+        this.clicked = true;
+
 
         this.masks = document.getElementById("masks").checked;
        
@@ -52,6 +60,17 @@ class Create extends React.Component{
         this.setState({numOfCreations: this.numOfCreations});
     }
 
+    reset(){
+        this.clicked = false;
+        this.assigned = false;
+        document.getElementById("overshadow").style.display = 'none';
+        this.setState({numOfCreations: this.numOfCreations});
+    }
+
+    callbackFunction = (childData) => {
+        this.numOfCreations = this.numOfCreations + 1;
+    }
+
 
     render(){
         if (!this.assigned){
@@ -61,7 +80,7 @@ class Create extends React.Component{
 
         return (
         <div id = "graphArea">
-          <Plot key = {this.numOfCreations} numOfNodes = {this.numPeople} masks = {this.masks} />
+          <Plot callbackFunction = {this.callbackFunction} id = {this.numOfCreations} key = {this.numOfCreations} numOfNodes = {this.numPeople} masks = {this.masks} />
         </div>
         )
     }

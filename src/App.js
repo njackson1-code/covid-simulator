@@ -10,7 +10,7 @@ function App() {
   
   
   return (
-    <>
+    <><div id = "overshadow"></div>
       <div className="App">
         <div id = "title">
           Covid Visualizer
@@ -38,6 +38,9 @@ function App() {
 
           <div id = "generate">
               <button id="GenerateSimulation">Generate Simulation</button>
+          </div>
+          <div id = "reset">
+              <button id="ResetSimulation">Reset Simulation</button>
           </div>
         </div>
         
