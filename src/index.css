@@ -99,7 +99,7 @@ code {
 border-bottom-left-radius:15%;
 }
 
-
+#masks {width:20px; height: 20px;}
 
 
 #inputs div{
@@ -109,6 +109,15 @@ border-bottom-left-radius:15%;
   width: 33%;
   height: 100px;
   padding: 0px;
+  transition: background-color 1s;
+}
+
+#inputs div:hover {
+  background-color: lightgray;
+  opacity: 0.75;
+  
+  
+  transition: background-color 1s, font-size 2s, color 2s;
 }
 
 #inputs div label{
@@ -130,22 +139,34 @@ border-bottom-left-radius:15%;
   height: 100px;
   border: 0px;
   padding: 0px;
-  transition: background-color 2s;
+  font-size: 20px;
+  transition: background-color 1s, font-size 2s, color 2s;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #inputs div input:hover {
-  background-color: blue;
+  background-color: lightgray;
+  opacity: 0.75;
+  
+  
+  
+  transition: background-color 1s, font-size 2s, color 2s;
+}
+
+::placeholder:hover {
+  color: white;
   opacity: 1;
-  transition: background-color 2s;
 }
 
 #masks {
   border-radius: 50%;
+  position: relative;
   height: 20px;
   width: 20px;
-  background-color: blue;
+  
+  box-sizing: border-box;
+  left: 50%;
 }
 
 

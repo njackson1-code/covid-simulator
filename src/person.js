@@ -20,7 +20,7 @@ class Person extends React.Component{
         this.infected = props.infected;
         this.masks = props.masks;
         this.angel = false;
-        this.deathRate = 1;
+        this.deathRate = 0.01;
         
         if (this.id == this.key + 'a0'){
             this.infected = true;
