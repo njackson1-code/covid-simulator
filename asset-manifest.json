@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/covid-simulator/static/css/main.652ae4a9.chunk.css",
-    "main.js": "/covid-simulator/static/js/main.339b3481.chunk.js",
-    "main.js.map": "/covid-simulator/static/js/main.339b3481.chunk.js.map",
+    "main.css": "/covid-simulator/static/css/main.c006e459.chunk.css",
+    "main.js": "/covid-simulator/static/js/main.f65f54ef.chunk.js",
+    "main.js.map": "/covid-simulator/static/js/main.f65f54ef.chunk.js.map",
     "runtime-main.js": "/covid-simulator/static/js/runtime-main.8af1a212.js",
     "runtime-main.js.map": "/covid-simulator/static/js/runtime-main.8af1a212.js.map",
-    "static/js/2.85880295.chunk.js": "/covid-simulator/static/js/2.85880295.chunk.js",
-    "static/js/2.85880295.chunk.js.map": "/covid-simulator/static/js/2.85880295.chunk.js.map",
+    "static/js/2.e5a7356f.chunk.js": "/covid-simulator/static/js/2.e5a7356f.chunk.js",
+    "static/js/2.e5a7356f.chunk.js.map": "/covid-simulator/static/js/2.e5a7356f.chunk.js.map",
     "index.html": "/covid-simulator/index.html",
-    "precache-manifest.c1f6cf41ce67e3871e3cd6e3e09f80b4.js": "/covid-simulator/precache-manifest.c1f6cf41ce67e3871e3cd6e3e09f80b4.js",
+    "precache-manifest.d8c4707e7643c1321cd7d9d6398bb9b0.js": "/covid-simulator/precache-manifest.d8c4707e7643c1321cd7d9d6398bb9b0.js",
     "service-worker.js": "/covid-simulator/service-worker.js",
-    "static/css/main.652ae4a9.chunk.css.map": "/covid-simulator/static/css/main.652ae4a9.chunk.css.map",
-    "static/js/2.85880295.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.85880295.chunk.js.LICENSE.txt",
+    "static/css/main.c006e459.chunk.css.map": "/covid-simulator/static/css/main.c006e459.chunk.css.map",
+    "static/js/2.e5a7356f.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.e5a7356f.chunk.js.LICENSE.txt",
     "static/media/angel.png": "/covid-simulator/static/media/angel.db2b3117.png",
     "static/media/coronavirus.png": "/covid-simulator/static/media/coronavirus.a625a7c2.png",
     "static/media/logo.svg": "/covid-simulator/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8af1a212.js",
-    "static/js/2.85880295.chunk.js",
-    "static/css/main.652ae4a9.chunk.css",
-    "static/js/main.339b3481.chunk.js"
+    "static/js/2.e5a7356f.chunk.js",
+    "static/css/main.c006e459.chunk.css",
+    "static/js/main.f65f54ef.chunk.js"
   ]
 }
