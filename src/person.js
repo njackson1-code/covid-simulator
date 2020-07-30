@@ -250,9 +250,9 @@ class Person extends React.Component{
                    return;
                }
            
-
+               
                 let element = document.getElementById(this.id);
-
+                
                 element.style.left = this.x + "%";
                 element.style.top = this.y + '%';
 

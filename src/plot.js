@@ -22,9 +22,9 @@ class Plot extends React.Component {
         this.taco = 0;
 
         if (props.masks){
-            this.infectionRate = 100;
+            this.infectionRate = 200;
         } else {
-            this.infectionRate = 25;
+            this.infectionRate = 75;
         }
 
         this.social = document.getElementById("sd").value/100;
@@ -94,6 +94,9 @@ class Plot extends React.Component {
           50
         );
         
+    }
+    componentDidUpdate(prevProps) {
+        this.allSick = this.props.allSick;
     }
 
     

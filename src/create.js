@@ -35,6 +35,7 @@ class Create extends React.Component{
         if (event.target.id != 'GenerateSimulation' || this.clicked){
             return;
         }
+        this.allSick = false;
         this.clicked = true;
 
 
@@ -64,6 +65,7 @@ class Create extends React.Component{
         this.clicked = false;
         this.assigned = false;
         document.getElementById("overshadow").style.display = 'none';
+        this.allSick = true;
         this.setState({numOfCreations: this.numOfCreations});
     }
 
@@ -80,7 +82,7 @@ class Create extends React.Component{
 
         return (
         <div id = "graphArea">
-          <Plot callbackFunction = {this.callbackFunction} id = {this.numOfCreations} key = {this.numOfCreations} numOfNodes = {this.numPeople} masks = {this.masks} />
+          <Plot allSick = {this.allSick} callbackFunction = {this.callbackFunction} id = {this.numOfCreations} key = {this.numOfCreations} numOfNodes = {this.numPeople} masks = {this.masks} />
         </div>
         )
     }
