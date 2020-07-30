@@ -18,20 +18,20 @@ function App() {
 
         <div id = "topBox">
           <div id = "inputs">
-            <div id = "people">
+            <div id = "people" className="input">
               <input id = "numPeople" placeholder="100"></input>
               <label>Number of People</label>
             </div>
             
-            <div id = "socialDistance">
+            <div id = "socialDistance" className="input">
               <input type="range" placeholder="Social Distancing" id ="sd" name="cowbell" min="0" max="100"></input>
               <label for="cowbell">Level of Social Distancing</label>
             </div>
             
 
-            <div>
-              <input id = {"masks"} type="checkbox"></input>
-              <label>Masks</label>
+            <div id = "maskBox" className="input">
+              <div name = "m" id = {"masks"}></div>
+              <label for="m">Masks</label>
             </div>
             
           </div>

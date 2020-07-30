@@ -97,7 +97,7 @@ class Person extends React.Component{
         this.infex = true;
         let element = document.getElementById(this.id);
         element.style.backgroundColor = 'red';
-        console.log(this.id)
+        
         this.recoverTimer = setTimeout(
             () => this.recover(),
             22500
@@ -112,6 +112,7 @@ class Person extends React.Component{
         if (this.recovered){
             return;
         }
+        console.log(this.id)
         this.recovered = true;
         let check = Math.random();
         let color = '#f8ed62';
@@ -168,7 +169,8 @@ class Person extends React.Component{
         
         if (this.allSick){
             this.stopMovement();
-            if (this.infected && !this.recovered){
+            if (this.infected && !this.recovered && !this.infex){
+
                 this.infect();
             }
 
@@ -202,7 +204,7 @@ class Person extends React.Component{
        this.y = this.equation(this.x);
 
         if (this.id == '1a0'){
-            console.log(this.y);
+           // console.log(this.y);
         }
       
         

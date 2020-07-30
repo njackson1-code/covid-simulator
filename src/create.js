@@ -9,6 +9,7 @@ class Create extends React.Component{
         this.numOfCreations = 0;
         this.assigned = false;
         this.clicked = false;
+        this.masks = false;
         //this.numPeople = document.getElementById('numPeople').value;
     }
 
@@ -25,7 +26,10 @@ class Create extends React.Component{
     }
 
     generate = event =>{
-        
+        if (event.target.id == 'masks'){
+            this.maskSet();
+            return;
+        }
         if (event.target.id == 'ResetSimulation'){
             this.reset();
             
@@ -35,19 +39,12 @@ class Create extends React.Component{
         if (event.target.id != 'GenerateSimulation' || this.clicked){
             return;
         }
+        
         this.allSick = false;
         this.clicked = true;
 
 
-        this.masks = document.getElementById("masks").checked;
-       
-        if (this.masks){
-           
-            this.masks = true;
-        }
-        else {
-            this.masks = false;
-        }
+        
 
 
         this.numPeople = document.getElementById('numPeople').value;
@@ -61,6 +58,16 @@ class Create extends React.Component{
         this.setState({numOfCreations: this.numOfCreations});
     }
 
+    maskSet(){
+        if (this.masks){
+            document.getElementById("masks").style.backgroundColor = "white";
+        }
+        else {
+            document.getElementById("masks").style.backgroundColor = "blue";
+        }
+        this.masks = !this.masks;
+        
+    }
     reset(){
         this.clicked = false;
         this.assigned = false;
@@ -75,12 +82,18 @@ class Create extends React.Component{
 
 
     render(){
+        if (this.allSick){
+            console.log("should cancel all")    
+        }
+
         if (!this.assigned){
+            
             return <div id = "graphArea"></div>;
         }
        
-
+        console.log(this.masks)
         return (
+            
         <div id = "graphArea">
           <Plot allSick = {this.allSick} callbackFunction = {this.callbackFunction} id = {this.numOfCreations} key = {this.numOfCreations} numOfNodes = {this.numPeople} masks = {this.masks} />
         </div>
