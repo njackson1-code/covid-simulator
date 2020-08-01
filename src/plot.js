@@ -93,10 +93,21 @@ class Plot extends React.Component {
           () => this.update(),
           50
         );
+        this.setPing();
         
     }
     componentDidUpdate(prevProps) {
         this.allSick = this.props.allSick;
+        if (this.key != this.props.id){
+            this.setPing();
+        }
+       
+        
+    }
+
+    componentWillUnmount(){
+        console.log("all sick time")
+        this.cancelPing();
     }
 
     
@@ -156,6 +167,36 @@ class Plot extends React.Component {
     distance(x,y){
         return Math.sqrt(Math.pow(this.allNodes[x].x - this.allNodes[y].x,2) + Math.pow(this.allNodes[x].y - this.allNodes[y].y, 2));
     }
+
+    cancelPing(){
+        clearTimeout(this.pingTimer);
+    }
+
+    setPing(){
+        console.log("setping")
+        this.pingTimer = setTimeout(
+            () => this.ping(),
+            10000
+          );
+    }
+
+    resetPing(){
+        console.log("resetping")
+        clearTimeout(this.pingTimer);
+        this.pingTimer = setTimeout(
+            () => this.ping(),
+            10000
+        );
+    }
+
+    ping(){
+        console.log("ping")
+        this.reset = true;
+        this.arrivedNodes = 0;
+        this.resetPing();
+    }
+
+
     
 
     //funciton to return data from people
@@ -184,6 +225,7 @@ class Plot extends React.Component {
         
         //if all arrived, must reset
         if (this.arrivedNodes == (this.numOfNodes)){
+            this.resetPing();
             this.reset = true;
             this.arrivedNodes = 0;
             this.shouldUpdate = true;
@@ -392,6 +434,7 @@ class Plot extends React.Component {
         if (this.allSick){
             clearInterval(this.timerID);
             document.getElementById("overshadow").style.display = 'block';
+            
             return (
             
            
