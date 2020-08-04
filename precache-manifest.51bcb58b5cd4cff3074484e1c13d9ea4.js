@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "738ebf97af645f7b62477f30aac84cfe",
+    "revision": "231927435503400307b055647e980078",
     "url": "/covid-simulator/index.html"
   },
   {
-    "revision": "6488ab7dbb68540fa8c0",
-    "url": "/covid-simulator/static/css/main.c006e459.chunk.css"
+    "revision": "9f3ad51c31d71bee623e",
+    "url": "/covid-simulator/static/css/main.442a9c07.chunk.css"
   },
   {
-    "revision": "3d7bb09f95da20eef814",
-    "url": "/covid-simulator/static/js/2.e5a7356f.chunk.js"
+    "revision": "c20ee0ee78186f5844e1",
+    "url": "/covid-simulator/static/js/2.5bcc5478.chunk.js"
   },
   {
     "revision": "f4aac9c965aa45c554c7c1d1e3f69ce3",
-    "url": "/covid-simulator/static/js/2.e5a7356f.chunk.js.LICENSE.txt"
+    "url": "/covid-simulator/static/js/2.5bcc5478.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6488ab7dbb68540fa8c0",
-    "url": "/covid-simulator/static/js/main.16232cf0.chunk.js"
+    "revision": "9f3ad51c31d71bee623e",
+    "url": "/covid-simulator/static/js/main.27b20b9d.chunk.js"
   },
   {
     "revision": "cdf0e76644ad533e12d5",
@@ -28,11 +28,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid-simulator/static/media/angel.db2b3117.png"
   },
   {
+    "revision": "3d592e8740ef5c6d835bf0c1df3ffe60",
+    "url": "/covid-simulator/static/media/company.3d592e87.png"
+  },
+  {
     "revision": "a625a7c2b1a47866209067fe30f99368",
     "url": "/covid-simulator/static/media/coronavirus.a625a7c2.png"
   },
   {
     "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
     "url": "/covid-simulator/static/media/logo.5d5d9eef.svg"
+  },
+  {
+    "revision": "7b575a0f5e3333a7a1f4a4b21fbfe500",
+    "url": "/covid-simulator/static/media/mountain.7b575a0f.png"
   }
 ]);

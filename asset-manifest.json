@@ -1,25 +1,27 @@
 {
   "files": {
-    "main.css": "/covid-simulator/static/css/main.c006e459.chunk.css",
-    "main.js": "/covid-simulator/static/js/main.16232cf0.chunk.js",
-    "main.js.map": "/covid-simulator/static/js/main.16232cf0.chunk.js.map",
+    "main.css": "/covid-simulator/static/css/main.442a9c07.chunk.css",
+    "main.js": "/covid-simulator/static/js/main.27b20b9d.chunk.js",
+    "main.js.map": "/covid-simulator/static/js/main.27b20b9d.chunk.js.map",
     "runtime-main.js": "/covid-simulator/static/js/runtime-main.8af1a212.js",
     "runtime-main.js.map": "/covid-simulator/static/js/runtime-main.8af1a212.js.map",
-    "static/js/2.e5a7356f.chunk.js": "/covid-simulator/static/js/2.e5a7356f.chunk.js",
-    "static/js/2.e5a7356f.chunk.js.map": "/covid-simulator/static/js/2.e5a7356f.chunk.js.map",
+    "static/js/2.5bcc5478.chunk.js": "/covid-simulator/static/js/2.5bcc5478.chunk.js",
+    "static/js/2.5bcc5478.chunk.js.map": "/covid-simulator/static/js/2.5bcc5478.chunk.js.map",
     "index.html": "/covid-simulator/index.html",
-    "precache-manifest.ac5d22dcd0dfe35f78a9fdbed2588f4b.js": "/covid-simulator/precache-manifest.ac5d22dcd0dfe35f78a9fdbed2588f4b.js",
+    "precache-manifest.51bcb58b5cd4cff3074484e1c13d9ea4.js": "/covid-simulator/precache-manifest.51bcb58b5cd4cff3074484e1c13d9ea4.js",
     "service-worker.js": "/covid-simulator/service-worker.js",
-    "static/css/main.c006e459.chunk.css.map": "/covid-simulator/static/css/main.c006e459.chunk.css.map",
-    "static/js/2.e5a7356f.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.e5a7356f.chunk.js.LICENSE.txt",
+    "static/css/main.442a9c07.chunk.css.map": "/covid-simulator/static/css/main.442a9c07.chunk.css.map",
+    "static/js/2.5bcc5478.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.5bcc5478.chunk.js.LICENSE.txt",
     "static/media/angel.png": "/covid-simulator/static/media/angel.db2b3117.png",
+    "static/media/company.png": "/covid-simulator/static/media/company.3d592e87.png",
     "static/media/coronavirus.png": "/covid-simulator/static/media/coronavirus.a625a7c2.png",
-    "static/media/logo.svg": "/covid-simulator/static/media/logo.5d5d9eef.svg"
+    "static/media/logo.svg": "/covid-simulator/static/media/logo.5d5d9eef.svg",
+    "static/media/mountain.png": "/covid-simulator/static/media/mountain.7b575a0f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8af1a212.js",
-    "static/js/2.e5a7356f.chunk.js",
-    "static/css/main.c006e459.chunk.css",
-    "static/js/main.16232cf0.chunk.js"
+    "static/js/2.5bcc5478.chunk.js",
+    "static/css/main.442a9c07.chunk.css",
+    "static/js/main.27b20b9d.chunk.js"
   ]
 }
