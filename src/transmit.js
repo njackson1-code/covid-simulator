@@ -42,7 +42,7 @@ class Transmit extends React.Component{
 
         this.timerID = setTimeout(
             () => {$el.css({
-                transform: "scale(" + 5 + ")",
+                transform: "scale(" + 35 + ")",
                
 
               });

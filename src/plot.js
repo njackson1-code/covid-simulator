@@ -1,6 +1,7 @@
 import React from 'react';
 import Person from './person.js';
 import Transmit from './transmit.js';
+import Meeting from './meeting.js';
 import { tsThisType } from '@babel/types';
 
 class Plot extends React.Component {
@@ -32,6 +33,7 @@ class Plot extends React.Component {
         this.arrivedNodes = 0;
 
         //meeting locations
+        this.renderMeetings = [];
         this.numOfMeetings = this.numOfNodes / 4;
         this.meetings = [];
         for (let i = 0; i < this.numOfMeetings; i ++){
@@ -41,7 +43,19 @@ class Plot extends React.Component {
             this.meetings[i] = {}
             this.meetings[i].x = x;
             this.meetings[i].y = y;
+            
+
+            let key = "m" + i;
+            let type = 0;
+            if (x > 50){
+                type = 1;
+            }
+
+            this.meetings[i].type = type;
+
+            this.renderMeetings.push(<Meeting x={x} y = {y} key = {key} id = {key} type = {type}/>)
         }
+        console.log(this.meetings)
 
         this.done = false;
 
@@ -55,9 +69,9 @@ class Plot extends React.Component {
             this.passNodes[i] = idNum;
             let num = Math.floor(Math.random() * this.numOfMeetings);
             
-                this.nodeMeeting[idNum] = this.meetings[num];
-                this.nodeMeeting[idNum].x += (1 * Math.random() - 0.5)
-                this.nodeMeeting[idNum].y += (1 * Math.random() - 0.5)
+            this.nodeMeeting[idNum] = this.meetings[num];
+            this.nodeMeeting[idNum].x += (1 * Math.random() - 0.5)
+            this.nodeMeeting[idNum].y += (1 * Math.random() - 0.5)
                 
             
             
@@ -104,6 +118,8 @@ class Plot extends React.Component {
        
         
     }
+
+    //need algorithm for spacing meeting locations
 
     componentWillUnmount(){
         console.log("all sick time")
@@ -267,7 +283,11 @@ class Plot extends React.Component {
                     
                     this.interactionDuration[healthyid] += 1;
                     let check = Math.random();
-                    if (check < (this.interactionDuration[healthyid]/this.infectionRate)){
+                    let locationTransmission = 1/2;
+                    if (this.nodeMeeting[healthyid].type == 0){
+                        locationTransmission = 200;
+                    }
+                    if (check < ((this.interactionDuration[healthyid]/this.infectionRate)/locationTransmission)){
                         
                         this.allNodes[healthyid].infected = true;
                             //this.allNodes[jid].infected = true;
@@ -332,13 +352,25 @@ class Plot extends React.Component {
             }
         }
 
+        this.renderMeetings = [];
         for (let i = 0; i < this.numOfMeetings; i ++){
             let x = Math.floor(1+Math.random() * 98);
             let y = Math.floor(2+Math.random() * 96);
             this.meetings[i] = {}
             this.meetings[i].x = x;
             this.meetings[i].y = y;
+
+            let key = "m" + x;
+            let type = 0;
+            if (x > 50){
+                type = 1;
+            }
+
+            this.meetings[i].type = type;
+
+            this.renderMeetings.push(<Meeting x={x} y = {y} key = {key} id = {key} type = {type}/>)
         }
+        console.log(this.renderMeetings)
 
        
             for (let i = 0; i < this.nodes.length; i ++){
@@ -353,14 +385,26 @@ class Plot extends React.Component {
     RESET() {
         this.nodeMeeting = {}
         //this.nodes = []
-        
-        for (let i = 0; i < this.numOfMeetings; i ++){
+        //this.renderMeetings = [];
+        /* for (let i = 0; i < this.numOfMeetings; i ++){
             let x = Math.floor(1+Math.random() * 98);
             let y = Math.floor(1+Math.random() * 98);
             this.meetings[i] = {}
             this.meetings[i].x = x;
             this.meetings[i].y = y;
-        }
+
+            let key = "m" + x;
+            let type = 0;
+            if (x > 50){
+                type = 1;
+            }
+
+            this.meetings[i].type = type;
+
+            this.renderMeetings.push(<Meeting x={x} y = {y} key = {key} id = {key} type = {type}/>)
+            
+
+        } */
 
 
         for (let i = 0; i < this.numOfNodes; i ++){
@@ -368,7 +412,6 @@ class Plot extends React.Component {
             this.passNodes[i] = idNum;
             let num = Math.floor(Math.random() * this.numOfMeetings);
             this.nodeMeeting[idNum] = this.meetings[num];
-            
             
             
             
@@ -445,6 +488,8 @@ class Plot extends React.Component {
                     <div>{this.state.nodes}</div>
                     
                     <div>{this.transmissions}</div>
+
+                    <div>{this.renderMeetings}</div>
                 </div>
             </>
             
@@ -458,6 +503,8 @@ class Plot extends React.Component {
                 <div>{this.state.nodes}</div>
                 
                 <div>{this.transmissions}</div>
+
+                <div>{this.renderMeetings}</div>
             </div>
             </>
            
