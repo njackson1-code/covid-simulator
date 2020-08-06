@@ -8,6 +8,9 @@ import { checkServerIdentity } from 'tls';
 class Person extends React.Component{
     constructor(props){
         super(props)
+
+        this.homeX = props.homeX;
+        this.homeY = props.homeY;
         
         this.xGoal = this.props.meeting['x']  + 2 * Math.random() - 1;
         this.yGoal = this.props.meeting['y'] + 2 * Math.random() - 1;
@@ -21,6 +24,7 @@ class Person extends React.Component{
         this.masks = props.masks;
         this.angel = false;
         this.deathRate = 0.01;
+        this.home = false;
         
         if (this.id == this.key + 'a0'){
             this.infected = true;
@@ -242,14 +246,18 @@ class Person extends React.Component{
                }
                if (check < this.social){
                    this.percent = 1;
-                   this.xGoal = this.x;
-                   this.yGoal = this.y;
+                   this.xGoal = this.homeX;
+                   this.yGoal = this.homeY;
                    let element = document.getElementById(this.id);
                 element.style.left = this.x + "%";
             
 
                 element.style.top = this.y + '%';
-                   return;
+                this.home = true;
+                   
+               }
+               else {
+                   this.home = false;
                }
            
                
@@ -307,6 +315,7 @@ class Person extends React.Component{
         send['cough'].x = this.x;
         send['cough'].y = this.x;
         send['recovered'] = this.recovered;
+        send['home'] = this.home;
         
         if (this.arrived){
             

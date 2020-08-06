@@ -36,6 +36,10 @@ class Plot extends React.Component {
         this.renderMeetings = [];
         this.numOfMeetings = this.numOfNodes / 4;
         this.meetings = [];
+
+        let meetingz = this.spaceMeetings(this.numOfMeetings);
+        console.log(meetingz)
+        console.log(this.numOfMeetings)
         for (let i = 0; i < this.numOfMeetings; i ++){
             
             let x = Math.floor(1+Math.random() * 98);
@@ -43,6 +47,8 @@ class Plot extends React.Component {
             this.meetings[i] = {}
             this.meetings[i].x = x;
             this.meetings[i].y = y;
+
+            this.meetings[i] = meetingz[i];
             
 
             let key = "m" + i;
@@ -53,9 +59,9 @@ class Plot extends React.Component {
 
             this.meetings[i].type = type;
 
-            this.renderMeetings.push(<Meeting x={x} y = {y} key = {key} id = {key} type = {type}/>)
+            this.renderMeetings.push(<Meeting x={this.meetings[i].x} y = {this.meetings[i].y} key = {key} id = {key} type = {type}/>)
         }
-        console.log(this.meetings)
+        
 
         this.done = false;
 
@@ -86,18 +92,41 @@ class Plot extends React.Component {
         this.nodes = this.nodes.map((item)=> {
             
             return (
-                <Person  allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
+                <Person  homeX = {49} homeY = {95} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
             )
         })
        
         
         //infecting one of them
-        this.nodes[0] = <Person allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
+        this.nodes[0] = <Person homeX = {49} homeY = {95}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
         this.state = {nodes: this.nodes};
        
 
         //transmission graphics
         this.transmissions = [];
+    }
+
+    spaceMeetings(num){
+        let block = Math.ceil(Math.sqrt(num));
+        let distance = 100/block;
+        let meeting = [];
+        
+
+        let count = 0;
+        for (let i = 0; i < block; i ++){
+            for (let j = 0; j < block; j ++){
+                if (count > num){
+                    return meeting;
+                }
+                let x = (j * distance) + 5 + Math.floor(Math.random() * distance/2);
+                let y = (i * distance) + 5  + Math.floor(Math.random() * distance/2);
+                meeting[count] = {};
+                meeting[count].x = x;
+                meeting[count].y = y;
+                count ++;
+            }
+        }
+        return meeting;
     }
 
     componentDidMount() {
@@ -271,8 +300,14 @@ class Plot extends React.Component {
                 }
                 
                 let healthyid = iid;
+                let sickid = jid;
                 if (!this.allNodes[jid].infected){
                     healthyid = jid;
+                    sickid = iid;
+                }
+
+                if (this.allNodes[sickid].home){
+                    continue;
                 }
                 
                 if (iid == 'a1'){
@@ -484,7 +519,8 @@ class Plot extends React.Component {
             <>  
                 {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
                 <div>
-                
+
+                    <div id = "home">Home</div>
                     <div>{this.state.nodes}</div>
                     
                     <div>{this.transmissions}</div>
@@ -500,6 +536,7 @@ class Plot extends React.Component {
             <>
             {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
             <div>
+                <div id = "home">Home</div>
                 <div>{this.state.nodes}</div>
                 
                 <div>{this.transmissions}</div>

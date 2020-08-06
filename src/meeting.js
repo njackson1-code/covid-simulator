@@ -9,11 +9,11 @@ class Meeting extends React.Component{
     constructor(props){
         super(props);
 
-        let widthOffset = document.getElementById("graphArea").clientWidth;
-        let heightOffset = document.getElementById("graphArea").clientHeight;
+        this.widthOffset = document.getElementById("graphArea").clientWidth;
+        this.heightOffset = document.getElementById("graphArea").clientHeight;
 
-        this.x = parseFloat(props.x)/100 *parseFloat(widthOffset) - 25;
-        this.y = parseFloat(props.y)/100 *parseFloat(heightOffset) - 25;
+        this.x = parseFloat(props.x)/100 *parseFloat(this.widthOffset) - 25;
+        this.y = parseFloat(props.y)/100 *parseFloat(this.heightOffset) - 25;
         this.type = props.type;
         this.id = props.id;
     }
@@ -22,8 +22,9 @@ class Meeting extends React.Component{
         console.log("aqui")
         let element = document.getElementById(this.id);
         console.log(element)
-        element.style.left = this.x + "px";
-        element.style.top = this.y + "px";
+        console.log(this.x/parseFloat(this.widthOffset))
+        element.style.left = this.x/parseFloat(this.widthOffset) * 100+ "%";
+        element.style.top = this.y/parseFloat(this.heightOffset) * 100 + "%";
     }
 
     render(){
