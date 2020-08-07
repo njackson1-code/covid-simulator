@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8cf720079b9e5c36911f584547a88f60",
+    "revision": "ad6039238f1a30cff412595c85d2fbcd",
     "url": "/covid-simulator/index.html"
   },
   {
-    "revision": "29255bc4ec33954e5910",
-    "url": "/covid-simulator/static/css/main.087ce9b8.chunk.css"
+    "revision": "eafdbb207119f85e7dd8",
+    "url": "/covid-simulator/static/css/main.a57ab854.chunk.css"
   },
   {
     "revision": "c20ee0ee78186f5844e1",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid-simulator/static/js/2.5bcc5478.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "29255bc4ec33954e5910",
-    "url": "/covid-simulator/static/js/main.e14d8290.chunk.js"
+    "revision": "eafdbb207119f85e7dd8",
+    "url": "/covid-simulator/static/js/main.534e732d.chunk.js"
   },
   {
     "revision": "cdf0e76644ad533e12d5",
