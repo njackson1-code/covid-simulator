@@ -19,20 +19,24 @@ function App() {
         <div id = "topBox">
           <div id = "inputs">
             <div id = "people" className="input">
-              <input id = "numPeople" placeholder="100"></input>
-              <label>Number of People</label>
+              <input class = "ins" id = "numPeople" placeholder="100"></input>
+              <label class="labels">Number of People</label>
             </div>
             
             <div id = "socialDistance" className="input">
-              <input type="range" placeholder="Social Distancing" id ="sd" name="cowbell" min="0" max="100"></input>
-              <label for="cowbell">Level of Social Distancing</label>
+              <input class = "ins" type="range" placeholder="Social Distancing" id ="sd" name="cowbell" min="0" max="100"></input>
+              <label  class="labels" for="cowbell">Level of Social Distancing</label>
             </div>
             
 
             <div id = "maskBox" className="input">
-              <div name = "m" id = {"masks"}></div>
-              <label for="m">Masks</label>
+              <div id = "innerMaskBox">
+                <div class = "ins" name = "m" id = {"masks"}></div>
+              </div>
+              
+              <label  class="labels" for="m">Masks</label>
             </div>
+            
             
           </div>
 

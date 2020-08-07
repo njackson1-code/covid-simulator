@@ -102,8 +102,7 @@ border-bottom-left-radius:15%;
 
 #masks {width:20px; height: 20px;}
 
-
-#inputs div{
+.input {
   box-sizing: border-box;
   float: left;
   position: relative;
@@ -121,7 +120,7 @@ border-bottom-left-radius:15%;
   transition: background-color 1s, font-size 2s, color 2s;
 }
 
-#inputs div label{
+.labels{
   box-sizing: border-box;
   margin: 0;
   border: 0px;
@@ -132,7 +131,7 @@ border-bottom-left-radius:15%;
 }
 
 
-#inputs div input {
+.ins {
   box-sizing: border-box;
   margin: 0px;
   text-align: center;
@@ -147,33 +146,37 @@ border-bottom-left-radius:15%;
 }
 
 #maskBox {
-  box-sizing: border-box;
-  float: left;
-  position: relative;
-  width: 33.333%;
-  height: 100px;
-  padding: 0px;
+
   transition: background-color 1s;
 }
 
+#innerMaskBox {
+
+  width: 100%;
+  height: 100%;
+
+}
+
 #maskBox label{
-  position: absolute;
+  
   color: black;
-  top: -19px !important;
-  left: -95px;
+top: -120px;
+ 
+ 
+ 
 }
 
 #masks {
   
-  border-radius: 50%;
+  
   position: relative;
-  
-  width: 20% !important;
-  height: 65% !important;
-  top: 17.5%;
-  
   box-sizing: border-box;
   margin-left: 40%;
+  background-color: lightgray;
+  width: 20%;
+  height: 50%;
+  top: 25%;
+  
 }
 
 
@@ -243,8 +246,10 @@ border-bottom-left-radius:15%;
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  -webkit-border-radius: 50%;
   background-color: blue;
   opacity: 0.3;
+  
   
   position: absolute;
 }

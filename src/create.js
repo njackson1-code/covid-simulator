@@ -19,6 +19,8 @@ class Create extends React.Component{
         let btn = document.getElementById("GenerateSimulation");
         //this.numPeople = document.getElementById('numPeople').value;
         let self = this;
+        let offset = 
+        //document.getElementById("masks").style.height = document.getElementById("masks").clientWidth + "px";
         document.addEventListener('click', this.generate);
         
        
