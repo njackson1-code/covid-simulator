@@ -25,6 +25,7 @@ class Person extends React.Component{
         this.angel = false;
         this.deathRate = 0.01;
         this.home = false;
+        this.justHome = false;
         
         if (this.id == this.key + 'a0'){
             this.infected = true;
@@ -244,6 +245,12 @@ class Person extends React.Component{
                if (this.id == 'a0'){
                    //console.log("reset velocity");
                }
+               if (this.home){
+                   this.justHome = true;
+               }
+               else {
+                   this.justHome = false;
+               }
                if (check < this.social){
                    this.percent = 1;
                    this.xGoal = this.homeX;
@@ -316,6 +323,7 @@ class Person extends React.Component{
         send['cough'].y = this.x;
         send['recovered'] = this.recovered;
         send['home'] = this.home;
+        send['justHome'] = this.justHome;
         
         if (this.arrived){
             
@@ -338,6 +346,8 @@ class Person extends React.Component{
             this.cough = true;
             
         }
+
+        
        
         if (this.props.reset) {
             

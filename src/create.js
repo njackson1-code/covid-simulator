@@ -21,6 +21,7 @@ class Create extends React.Component{
         let self = this;
         let offset = 
         //document.getElementById("masks").style.height = document.getElementById("masks").clientWidth + "px";
+        //document.getElementById("homeBorder").height = 
         document.addEventListener('click', this.generate);
         
        

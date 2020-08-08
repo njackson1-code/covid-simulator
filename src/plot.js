@@ -90,15 +90,15 @@ class Plot extends React.Component {
 
         //converting to component list with keys
         this.nodes = this.nodes.map((item)=> {
-            
+            let x = 40 + Math.random()*20
             return (
-                <Person  homeX = {49} homeY = {95} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
+                <Person  homeX = {x} homeY = {102} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
             )
         })
        
         
         //infecting one of them
-        this.nodes[0] = <Person homeX = {49} homeY = {95}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
+        this.nodes[0] = <Person homeX = {55} homeY = {102}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
         this.state = {nodes: this.nodes};
        
 
@@ -213,6 +213,10 @@ class Plot extends React.Component {
         return Math.sqrt(Math.pow(this.allNodes[x].x - this.allNodes[y].x,2) + Math.pow(this.allNodes[x].y - this.allNodes[y].y, 2));
     }
 
+    homeDistance(x){
+        return Math.sqrt(Math.pow(this.allNodes[x].x - 49,2) + Math.pow(this.allNodes[x].y - 102, 2));
+    }
+
     cancelPing(){
         clearTimeout(this.pingTimer);
     }
@@ -306,11 +310,19 @@ class Plot extends React.Component {
                     sickid = iid;
                 }
 
-                if (this.allNodes[sickid].home){
+                //if (this.allNodes[sickid].home){
+                  //  continue;
+                //}
+
+                
+                
+                if (this.homeDistance(sickid) < 15){
                     continue;
                 }
                 
-                if (iid == 'a1'){
+                
+                if (sickid == '1a0'){
+                    console.log(this.homeDistance(sickid))
                    //console.log(this.allNodes[iid].x);
                 }
                 
@@ -520,7 +532,7 @@ class Plot extends React.Component {
                 {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
                 <div>
 
-                    <div id = "home">Home</div>
+                    
                     <div>{this.state.nodes}</div>
                     
                     <div>{this.transmissions}</div>
@@ -536,7 +548,7 @@ class Plot extends React.Component {
             <>
             {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
             <div>
-                <div id = "home">Home</div>
+                
                 <div>{this.state.nodes}</div>
                 
                 <div>{this.transmissions}</div>
@@ -546,6 +558,21 @@ class Plot extends React.Component {
             </>
            
         )
+
+        /* return ( 
+            <>
+            {this.allSick && <div id = {"endmsg"}>{this.message}</div>}
+            <div>
+                <div id = "home">Home</div>
+                <div>{this.state.nodes}</div>
+                
+                <div>{this.transmissions}</div>
+
+                <div>{this.renderMeetings}</div>
+            </div>
+            </>
+           
+        ) */
     }
 }
 
