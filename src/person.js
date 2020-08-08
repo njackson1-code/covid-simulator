@@ -105,7 +105,7 @@ class Person extends React.Component{
         
         this.recoverTimer = setTimeout(
             () => this.recover(),
-            22500
+            42500
         );
         this.setState({
             date: new Date()
@@ -117,7 +117,7 @@ class Person extends React.Component{
         if (this.recovered){
             return;
         }
-        console.log(this.id)
+        
         this.recovered = true;
         let check = Math.random();
         let color = '#f8ed62';

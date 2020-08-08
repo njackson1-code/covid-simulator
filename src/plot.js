@@ -38,8 +38,8 @@ class Plot extends React.Component {
         this.meetings = [];
 
         let meetingz = this.spaceMeetings(this.numOfMeetings);
-        console.log(meetingz)
-        console.log(this.numOfMeetings)
+        
+
         for (let i = 0; i < this.numOfMeetings; i ++){
             
             let x = Math.floor(1+Math.random() * 98);
@@ -68,11 +68,16 @@ class Plot extends React.Component {
         //stores the meeting spot for each specified node
         this.nodeMeeting = {}
         this.interactionDuration = {}
+
+        this.sickList = [];
+        this.healthyList = [];
+
         for (let i = 0; i < this.numOfNodes; i ++){
             let check = Math.random();
             let idNum = this.key + 'a' + i;
             this.nodes[i] =  idNum;
             this.passNodes[i] = idNum;
+            
             let num = Math.floor(Math.random() * this.numOfMeetings);
             
             this.nodeMeeting[idNum] = this.meetings[num];
@@ -85,20 +90,26 @@ class Plot extends React.Component {
             this.allNodes[idNum] = {};
             this.interactionDuration = {};
             this.allNodes[idNum].infected = false;
+
+            if (i > 0){
+                this.healthyList.push(idNum);
+            }
+            
         }
+        this.sickList.push(this.key + 'a0');
 
 
         //converting to component list with keys
         this.nodes = this.nodes.map((item)=> {
             let x = 40 + Math.random()*20
             return (
-                <Person  homeX = {x} homeY = {102} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
+                <Person  homeX = {x} homeY = {110} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
             )
         })
        
         
         //infecting one of them
-        this.nodes[0] = <Person homeX = {55} homeY = {102}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
+        this.nodes[0] = <Person homeX = {55} homeY = {110}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
         this.state = {nodes: this.nodes};
        
 
@@ -151,7 +162,6 @@ class Plot extends React.Component {
     //need algorithm for spacing meeting locations
 
     componentWillUnmount(){
-        console.log("all sick time")
         this.cancelPing();
     }
 
@@ -222,7 +232,6 @@ class Plot extends React.Component {
     }
 
     setPing(){
-        console.log("setping")
         this.pingTimer = setTimeout(
             () => this.ping(),
             10000
@@ -230,7 +239,6 @@ class Plot extends React.Component {
     }
 
     resetPing(){
-        console.log("resetping")
         clearTimeout(this.pingTimer);
         this.pingTimer = setTimeout(
             () => this.ping(),
@@ -239,7 +247,6 @@ class Plot extends React.Component {
     }
 
     ping(){
-        console.log("ping")
         this.reset = true;
         this.arrivedNodes = 0;
         this.resetPing();
@@ -287,7 +294,10 @@ class Plot extends React.Component {
     
     checkCollision(){
         let sum = 0; let untouched = 0; let recov = 0;
-       
+        
+        
+
+
         for (let i = 0; i < this.nodes.length; i ++){
             for (let j = 0; j < this.nodes.length; j ++){
                 let iid = this.passNodes[i];
@@ -321,10 +331,7 @@ class Plot extends React.Component {
                 }
                 
                 
-                if (sickid == '1a0'){
-                    console.log(this.homeDistance(sickid))
-                   //console.log(this.allNodes[iid].x);
-                }
+              
                 
                 if (this.distance(iid,jid) < 2.5){
                     
@@ -353,19 +360,7 @@ class Plot extends React.Component {
                     this.interactionDuration[healthyid] = 0;
                 }
                 
-                /* if (i != j){
-                    if ((this.allNodes[iid].infected || this.allNodes[jid].infected) && !(this.allNodes[iid].infected && this.allNodes[jid].infected)){
-                        let check = Math.random();
-                        
-                        if (check < this.infectionRate && this.distance(iid,jid) < 2.5){
-                            //if it makes one sick, it want to update it
-                            this.allNodes[iid].infected = true;
-                            this.allNodes[jid].infected = true;
-                            this.shouldUpdate = true;
-                        }
-                    }
-                    
-                } */
+                 
             }
             if (!this.allNodes[this.passNodes[i]].infected && !this.allNodes[this.passNodes[i]].recovered){
                 untouched = untouched + 1;
@@ -381,7 +376,7 @@ class Plot extends React.Component {
         if (sum == this.numOfNodes || untouched == 0 || (untouched + recov == this.numOfNodes)){
             this.allSick = true;
             this.message = "Immunity Reached. No one else to spread disease to."
-        }
+        } 
         
     }
 
@@ -417,8 +412,6 @@ class Plot extends React.Component {
 
             this.renderMeetings.push(<Meeting x={x} y = {y} key = {key} id = {key} type = {type}/>)
         }
-        console.log(this.renderMeetings)
-
        
             for (let i = 0; i < this.nodes.length; i ++){
                 let iid = this.passNodes[i];

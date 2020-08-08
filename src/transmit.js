@@ -10,7 +10,7 @@ class Transmit extends React.Component{
         let widthOffset = document.getElementById("graphArea").clientWidth;
         let heightOffset = document.getElementById("graphArea").clientHeight;
 
-        console.log(parseFloat(props.x)/100)
+        
         this.x = parseFloat(props.x)/100 *parseFloat(widthOffset) + 10;
         this.y = parseFloat(props.y)/100 *parseFloat(heightOffset) +10;
         //console.log(this.x)
