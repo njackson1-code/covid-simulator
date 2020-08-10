@@ -25,6 +25,21 @@ code {
   
 }
 
+#meter {
+  float: left;
+  box-sizing: border-box;
+  width: 10%;
+  height: 520px;
+  background-color: white;
+  overflow: hidden;
+}
+
+#meter div {
+  width: 30%;
+  transition: 1s;
+  margin-left: 35%;
+}
+
 #bottomBorder div {
   width: 33.33%;
   box-sizing: border-box;
@@ -37,16 +52,20 @@ code {
 }
 
 
-#negativeCovid {
+#negativeCovid, #negativeMeter {
   background-color: lightblue;
 }
 
-#positiveCovid {
+#positiveCovid, #positiveMeter {
   background-color: red;
 }
 
-#recoveredCovid {
+#recoveredCovid, #recoveredMeter {
   background-color: #f8ed62;
+}
+
+#deceasedMeter {
+  background-color: black;
 }
 
 
@@ -318,5 +337,4 @@ top: -120px;
 
 #homeBorder:hover {
   background-color: #383e56;
-  
 }

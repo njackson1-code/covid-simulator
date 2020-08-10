@@ -19,10 +19,9 @@ class Meeting extends React.Component{
     }
 
     componentDidMount(){
-        console.log("aqui")
+        
         let element = document.getElementById(this.id);
-        console.log(element)
-        console.log(this.x/parseFloat(this.widthOffset))
+        
         element.style.left = this.x/parseFloat(this.widthOffset) * 100+ "%";
         element.style.top = this.y/parseFloat(this.heightOffset) * 100 + "%";
     }

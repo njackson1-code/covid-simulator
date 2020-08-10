@@ -322,6 +322,7 @@ class Person extends React.Component{
         send['cough'].x = this.x;
         send['cough'].y = this.x;
         send['recovered'] = this.recovered;
+        send['angel'] = this.angel;
         send['home'] = this.home;
         send['justHome'] = this.justHome;
         

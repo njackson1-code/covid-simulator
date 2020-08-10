@@ -103,18 +103,24 @@ class Plot extends React.Component {
         this.nodes = this.nodes.map((item)=> {
             let x = 40 + Math.random()*20
             return (
-                <Person  homeX = {x} homeY = {110} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.callbackFunction} key={item}/>
+                <Person  homeX = {x} homeY = {110} allSick = {false} masks = {props.masks} infected = {false} social = {this.social} recovered = {false} reset = {false} id={item} meeting={this.nodeMeeting[item]} parentCallback = {this.childFunction} key={item}/>
             )
         })
        
         
         //infecting one of them
-        this.nodes[0] = <Person homeX = {55} homeY = {110}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.callbackFunction} key={this.key + 'a0'}/>
+        this.nodes[0] = <Person homeX = {55} homeY = {110}  allSick = {false} masks = {props.masks} infected = {true} social = {this.social} id={this.key + 'a0'} recovered = {false} reset = {false} meeting={this.nodeMeeting[this.key + 'a0']} parentCallback = {this.childFunction} key={this.key + 'a0'}/>
         this.state = {nodes: this.nodes};
        
 
         //transmission graphics
         this.transmissions = [];
+
+        //meter graphics
+        this.positiveNumbers = 1;
+        this.negativeNumbers = this.numOfNodes-1;
+        this.recoveredNumbers = 0;
+        this.deceasedNumbers = 0;
     }
 
     spaceMeetings(num){
@@ -148,6 +154,7 @@ class Plot extends React.Component {
           50
         );
         this.setPing();
+
         
     }
     componentDidUpdate(prevProps) {
@@ -162,7 +169,13 @@ class Plot extends React.Component {
     //need algorithm for spacing meeting locations
 
     componentWillUnmount(){
+        this.negativeNumbers = 0; this.positiveNumbers = 0; this.recoveredNumbers = 0; this.deceasedNumbers = 0;
+        this.updateMeter();
+        
         this.cancelPing();
+        clearInterval(this.timerID);
+        
+        
     }
 
     
@@ -208,7 +221,7 @@ class Plot extends React.Component {
     updateComponents(){
         for (let i = 0; i < this.numOfNodes; i ++){
             let iid = this.key + 'a' + i;
-            this.nodes[i] = <Person allSick = {this.allSick} infected = {this.allNodes[iid].infected} recovered = {this.allNodes[iid].recovered} reset = {this.reset} id={iid} meeting={this.nodeMeeting[iid]} parentCallback = {this.callbackFunction} key={iid}/>
+            this.nodes[i] = <Person allSick = {this.allSick} infected = {this.allNodes[iid].infected} recovered = {this.allNodes[iid].recovered} reset = {this.reset} id={iid} meeting={this.nodeMeeting[iid]} parentCallback = {this.childFunction} key={iid}/>
         }
         this.shouldUpdate = false;
     }
@@ -256,7 +269,7 @@ class Plot extends React.Component {
     
 
     //funciton to return data from people
-    callbackFunction = (childData) => {
+    childFunction = (childData) => {
         //if id of person already stored, but newly arrived, increment
        // if (childData.id in this.allNodes && childData.arrived){
             //if (!this.allNodes[childData.id].arrived && childData.arrived){
@@ -295,7 +308,7 @@ class Plot extends React.Component {
     checkCollision(){
         let sum = 0; let untouched = 0; let recov = 0;
         
-        
+        this.negativeNumbers = 0; this.positiveNumbers = 0; this.recoveredNumbers = 0; this.deceasedNumbers = 0;
 
 
         for (let i = 0; i < this.nodes.length; i ++){
@@ -303,13 +316,11 @@ class Plot extends React.Component {
                 let iid = this.passNodes[i];
                 let jid = this.passNodes[j];
                 
-                if (this.allNodes[iid].recovered || this.allNodes[jid].recovered || i == j || (this.allNodes[iid].infected && this.allNodes[jid].infected)){
-                    
+                if (this.allNodes[iid].recovered || this.allNodes[jid].recovered || i == j || (this.allNodes[iid].infected && this.allNodes[jid].infected)){  
                     continue;
                 }
                 
                 if (!this.allNodes[iid].infected && !this.allNodes[jid].infected){
-                    
                     continue;
                 }
                 
@@ -320,11 +331,6 @@ class Plot extends React.Component {
                     sickid = iid;
                 }
 
-                //if (this.allNodes[sickid].home){
-                  //  continue;
-                //}
-
-                
                 
                 if (this.homeDistance(sickid) < 15){
                     continue;
@@ -346,7 +352,7 @@ class Plot extends React.Component {
                         this.allNodes[healthyid].infected = true;
                             //this.allNodes[jid].infected = true;
                             this.shouldUpdate = true;
-
+                        
                         let ind = this.transmissions.length;
                         this.transmissions.push(<Transmit key = {"tm" + healthyid} id = {"tm" + healthyid} x={this.allNodes[healthyid].x} y={this.allNodes[healthyid].y}/>);
                         setTimeout(() => {
@@ -362,22 +368,48 @@ class Plot extends React.Component {
                 
                  
             }
+            //negative
             if (!this.allNodes[this.passNodes[i]].infected && !this.allNodes[this.passNodes[i]].recovered){
                 untouched = untouched + 1;
+                this.negativeNumbers ++;
             }
+            //positive
             if (this.allNodes[this.passNodes[i]].infected && !this.allNodes[this.passNodes[i]].recovered) {
+                this.positiveNumbers ++;
                 sum = sum + 1;
             }
-            if (this.allNodes[this.passNodes[i]].recovered){
+            //recovered
+            if (this.allNodes[this.passNodes[i]].recovered && !this.allNodes[this.passNodes[i]].angel){
+                this.recoveredNumbers ++;
                 recov = recov + 1;
             }
+            if (this.allNodes[this.passNodes[i]].angel){
+               this.deceasedNumbers ++;
+            }
         }
-
+        
         if (sum == this.numOfNodes || untouched == 0 || (untouched + recov == this.numOfNodes)){
             this.allSick = true;
             this.message = "Immunity Reached. No one else to spread disease to."
         } 
+
+        this.updateMeter();
+
         
+    }
+
+    updateMeter(){
+        let send = {};
+        send.positiveNumbers = this.positiveNumbers/this.numOfNodes * 100;
+        send.negativeNumbers = this.negativeNumbers/this.numOfNodes * 100;
+        send.recoveredNumbers = this.recoveredNumbers/this.numOfNodes * 100;
+        send.deceasedNumbers = this.deceasedNumbers/this.numOfNodes * 100;
+
+        this.props.callbackFunction(send);
+        /* document.getElementById("positiveMeter").style.height = this.positiveNumbers/this.numOfNodes * 100 + "%";
+        document.getElementById("negativeMeter").style.height = this.negativeNumbers/this.numOfNodes * 100+ "%";
+        document.getElementById("recoveredMeter").style.height = this.recoveredNumbers/this.numOfNodes * 100+ "%";
+        document.getElementById("deceasedMeter").style.height = this.deceasedNumbers/this.numOfNodes * 100+ "%"; */
     }
 
     updateMeetings(){
@@ -517,7 +549,11 @@ class Plot extends React.Component {
         if (this.allSick){
             clearInterval(this.timerID);
             document.getElementById("overshadow").style.display = 'block';
-            
+            document.getElementById("positiveMeter").style.height = "0px"
+        document.getElementById("negativeMeter").style.height = "0px"
+       
+        document.getElementById("recoveredMeter").style.height = "0%"
+        document.getElementById("deceasedMeter").style.height = "0px"
             return (
             
            
