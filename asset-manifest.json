@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/covid-simulator/static/css/main.e0752824.chunk.css",
-    "main.js": "/covid-simulator/static/js/main.1b69eee3.chunk.js",
-    "main.js.map": "/covid-simulator/static/js/main.1b69eee3.chunk.js.map",
+    "main.css": "/covid-simulator/static/css/main.bc96ab90.chunk.css",
+    "main.js": "/covid-simulator/static/js/main.84518fdb.chunk.js",
+    "main.js.map": "/covid-simulator/static/js/main.84518fdb.chunk.js.map",
     "runtime-main.js": "/covid-simulator/static/js/runtime-main.8af1a212.js",
     "runtime-main.js.map": "/covid-simulator/static/js/runtime-main.8af1a212.js.map",
-    "static/js/2.5bcc5478.chunk.js": "/covid-simulator/static/js/2.5bcc5478.chunk.js",
-    "static/js/2.5bcc5478.chunk.js.map": "/covid-simulator/static/js/2.5bcc5478.chunk.js.map",
+    "static/js/2.7f06c030.chunk.js": "/covid-simulator/static/js/2.7f06c030.chunk.js",
+    "static/js/2.7f06c030.chunk.js.map": "/covid-simulator/static/js/2.7f06c030.chunk.js.map",
     "index.html": "/covid-simulator/index.html",
-    "precache-manifest.5656aeddf22d547bc45a79929fe75109.js": "/covid-simulator/precache-manifest.5656aeddf22d547bc45a79929fe75109.js",
+    "precache-manifest.eb1969d35bb46de99adcc4a5272fe50b.js": "/covid-simulator/precache-manifest.eb1969d35bb46de99adcc4a5272fe50b.js",
     "service-worker.js": "/covid-simulator/service-worker.js",
-    "static/css/main.e0752824.chunk.css.map": "/covid-simulator/static/css/main.e0752824.chunk.css.map",
-    "static/js/2.5bcc5478.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.5bcc5478.chunk.js.LICENSE.txt",
+    "static/css/main.bc96ab90.chunk.css.map": "/covid-simulator/static/css/main.bc96ab90.chunk.css.map",
+    "static/js/2.7f06c030.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.7f06c030.chunk.js.LICENSE.txt",
     "static/media/angel.png": "/covid-simulator/static/media/angel.db2b3117.png",
     "static/media/company.png": "/covid-simulator/static/media/company.3d592e87.png",
     "static/media/coronavirus.png": "/covid-simulator/static/media/coronavirus.a625a7c2.png",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8af1a212.js",
-    "static/js/2.5bcc5478.chunk.js",
-    "static/css/main.e0752824.chunk.css",
-    "static/js/main.1b69eee3.chunk.js"
+    "static/js/2.7f06c030.chunk.js",
+    "static/css/main.bc96ab90.chunk.css",
+    "static/js/main.84518fdb.chunk.js"
   ]
 }
