@@ -34,10 +34,22 @@ code {
   overflow: hidden;
 }
 
+#meterHover {
+  position: absolute;
+  
+  width: auto;
+  z-index: 2;
+}
+
 #meter div {
   width: 30%;
   transition: 1s;
   margin-left: 35%;
+}
+
+#meetingHover {
+  position: absolute;
+  width: auto;
 }
 
 #bottomBorder div {
@@ -99,7 +111,8 @@ code {
 }
 
 #generate, #reset {
-  width: 100%;
+  width: 20%;
+  padding-left: 40%;
   position: relative;
   z-index: 4;
   top: -2px;
@@ -301,6 +314,8 @@ top: -120px;
   width: 50px;
   opacity: 1;
   position: absolute;
+  
+  
 }
 
 .meeting img {

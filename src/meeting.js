@@ -24,6 +24,36 @@ class Meeting extends React.Component{
         
         element.style.left = this.x/parseFloat(this.widthOffset) * 100+ "%";
         element.style.top = this.y/parseFloat(this.heightOffset) * 100 + "%";
+
+        let description = "Indoor Establishment (Higher Rate of Transmission";
+        if (this.type != 1){
+            description = "Outdoor Area (Lower Rate of Transmission";
+        }
+
+        var mouseX;
+        var mouseY;
+        $(document).mousemove( function(e) {
+        mouseX = e.pageX; 
+        mouseY = e.pageY;
+        $("#meetingHover").css({'top':mouseY-200,'left':mouseX-75})
+        });  
+
+        $("#" + this.id).hover(
+            function(){
+                console.log("y" + mouseY)
+                console.log("x" + mouseX)
+                $(this).css("opacity", "0.5");
+                $("#graphArea").append("<div id = 'meetingHover'>" + description + "</div>")
+                $("#meetingHover").css({'top':mouseY-200,'left':mouseX-75, "background-color": "lightgray"})
+              
+
+            }, 
+            function(){
+                $(this).css("opacity", "1");
+                $("#meetingHover").remove()
+                
+            }
+          );
     }
 
     render(){
