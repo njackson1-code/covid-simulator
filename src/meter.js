@@ -38,7 +38,7 @@ class Meter extends React.Component{
         $(document).mousemove( function(e) {
         mouseX = e.pageX; 
         mouseY = e.pageY;
-        $("#meterHover").css({'top':mouseY,'left':mouseX+10})
+        $("#meterHover").css({'top':mouseY-175,'left':mouseX+10})
         });  
 
 

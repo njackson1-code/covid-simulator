@@ -32,7 +32,7 @@ class Transmit extends React.Component{
         element.style.top = this.y + 'px';
         element.style.width = "1px";
         element.style.height = "1px"
-        element.style.transition = '1.5s';
+        element.style.transition = '2.5s';
         
 
         var $el = $("#" + this.id);
@@ -42,8 +42,8 @@ class Transmit extends React.Component{
         });
 
         this.timerID = setTimeout(
-            () => {$el.css('-webkit-transform', "scale(" + 35 + ")");
-                $el.css('border-radius', "50%");
+            () => {$el.css('width', "40px");
+                $el.css('height', "40px");
                 //element.style.width = "40px";
             //element.style.height = "40px"
         },

@@ -125,18 +125,34 @@ class Create extends React.Component{
                     <div id = "information">
                         <img id = {"pointer"} src = {Arrow}></img>
                         <div id = "beforeHover">
-                            <div id = "infoStart">I</div>
-                            <div>N</div>
-                            <div>F</div>
+                            <div id = "infoStart">S</div>
+                            <div>Y</div>
+                            <div>M</div>
+                            <div>P</div>
+                            <div>T</div>
                             <div>O</div>
+                            <div>M</div>
+                            <div>S</div>
                         </div>
 
                         <div id = "duringHover">
-                        Covid is a disease in which Covid is a disease in which Covid is a disease in which Covid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichvCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+                        Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19:
+Fever or chills
+Cough
+Shortness of breath or difficulty breathing
+<ul>Fatigue</ul>
+<ul>Muscle or body aches</ul>
+<ul>New loss of taste or smell</ul>
+<ul>Sore throat</ul>
+<ul>Congestion or runny nose</ul>
+<ul>Nausea or vomiting</ul>
+<ul>Diarrhea</ul>
+
+
+
+
+
+
                         </div>
                     </div>
        
@@ -158,18 +174,29 @@ class Create extends React.Component{
         <div id = "information">
                         <img id = {"pointer"} src = {Arrow}></img>
                         <div id = "beforeHover">
-                            <div id = "infoStart">I</div>
-                            <div>N</div>
-                            <div>F</div>
+                            <div id = "infoStart">S</div>
+                            <div>Y</div>
+                            <div>M</div>
+                            <div>P</div>
+                            <div>T</div>
                             <div>O</div>
+                            <div>M</div>
+                            <div>S</div>
                         </div>
 
                         <div id = "duringHover">
-                        Covid is a disease in which Covid is a disease in which Covid is a disease in which Covid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichvCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+                        Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19:
+Fever or chills
+Cough
+Shortness of breath or difficulty breathing
+<ul>Fatigue</ul>
+<ul>Muscle or body aches</ul>
+<ul>New loss of taste or smell</ul>
+<ul>Sore throat</ul>
+<ul>Congestion or runny nose</ul>
+<ul>Nausea or vomiting</ul>
+<ul>Diarrhea</ul>
+
                         </div>
                     </div>
         </>

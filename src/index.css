@@ -72,6 +72,10 @@ code {
   
 }
 
+#information div ul {
+  text-decoration: underline;
+}
+
 #information:hover {
   opacity: 0.8;
   transition: right 2s color 2s;
@@ -114,7 +118,7 @@ code {
 
 
 #infoStart {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 #graphBox {
@@ -182,6 +186,7 @@ code {
   z-index: 1;
  border: 1px solid white;
   position: absolute; 
+  transition: background-color 4s;
 }
 
 #title {

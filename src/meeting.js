@@ -35,7 +35,7 @@ class Meeting extends React.Component{
         $(document).mousemove( function(e) {
         mouseX = e.pageX; 
         mouseY = e.pageY;
-        $("#meetingHover").css({'top':mouseY-200,'left':mouseX-75})
+        $("#meetingHover").css({'top':mouseY-200,'left':mouseX-100})
         });  
 
         $("#" + this.id).hover(
