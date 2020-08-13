@@ -50,7 +50,7 @@ function App() {
         
         <Create />
 
-        <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
+        {/* <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div> */}
 
         <div id = "bottomBorder">
           <div id = "negativeCovid">

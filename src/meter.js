@@ -31,14 +31,14 @@ class Meter extends React.Component{
     colorFunction(){
         this.colors = {}; this.colors["positiveMeter"] = 'red'; this.colors["recoveredMeter"] = '#f8ed62'; this.colors["negativeMeter"] = 'lightblue'; this.colors["deceasedMeter"] = 'black';
         let colors = this.colors;
-        let description = {"positiveMeter": "Have Covid", "negativeMeter": "No Covid", "recoveredMeter": "Recovered from Covid", "deceasedMeter": "Deceased from Covid"};
+        let description = {"positiveMeter": "Positive", "negativeMeter": "Negative", "recoveredMeter": "Recovered", "deceasedMeter": "Deceased"};
 
         var mouseX;
         var mouseY;
         $(document).mousemove( function(e) {
         mouseX = e.pageX; 
         mouseY = e.pageY;
-        $("#meterHover").css({'top':mouseY,'left':mouseX+5})
+        $("#meterHover").css({'top':mouseY,'left':mouseX+10})
         });  
 
 

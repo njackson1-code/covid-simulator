@@ -388,7 +388,7 @@ class Plot extends React.Component {
             }
         }
         
-        if (sum == this.numOfNodes || untouched == 0 || (untouched + recov == this.numOfNodes)){
+        if (sum == this.numOfNodes || untouched == 0 || (untouched + recov + this.deceasedNumbers == this.numOfNodes)){
             this.allSick = true;
             this.message = "Immunity Reached. No one else to spread disease to."
         } 

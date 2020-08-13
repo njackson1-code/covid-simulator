@@ -69,7 +69,7 @@ class Create extends React.Component{
 
     maskSet(){
         if (this.masks){
-            document.getElementById("masks").style.backgroundColor = "white";
+            document.getElementById("masks").style.backgroundColor = "lightgray";
         }
         else {
             document.getElementById("masks").style.backgroundColor = "blue";
@@ -116,8 +116,11 @@ class Create extends React.Component{
             
             return (<>
                     <Meter allSick = {this.allSick} negativeNumbers = {this.negativeNumbers} positiveNumbers = {this.positiveNumbers} recoveredNumbers = {this.recoveredNumbers} deceasedNumbers = {this.deceasedNumbers}/>
-                   
+
+                    <div id = "graphBox">
                     <div id = "graphArea"></div>
+                    <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
+                    </div>
             </>);
         }
        
@@ -125,10 +128,19 @@ class Create extends React.Component{
         return (
         <>  
             <Meter negativeNumbers = {this.negativeNumbers} positiveNumbers = {this.positiveNumbers} recoveredNumbers = {this.recoveredNumbers} deceasedNumbers = {this.deceasedNumbers}/>
-            
+        
+        <div id = "graphBox">
         <div id = "graphArea">
           <Plot allSick = {this.allSick} callbackFunction = {this.callbackFunction} id = {this.numOfCreations} key = {this.numOfCreations} numOfNodes = {this.numPeople} masks = {this.masks} />
         </div>
+        <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
+        </div>
+
+        <div id = "information">Covid is a disease in which Covid is a disease in which Covid is a disease in which Covid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichvCovid is a disease in whichCovid is a disease in whichCovid is a disease in which</div>
         </>
         )
     }

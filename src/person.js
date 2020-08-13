@@ -105,7 +105,7 @@ class Person extends React.Component{
         
         this.recoverTimer = setTimeout(
             () => this.recover(),
-            42500
+            32500
         );
         this.setState({
             date: new Date()
