@@ -60,12 +60,63 @@ code {
 }
 
 #information {
+  transition: 2s;
+  position: absolute;
+  right: -10%;
   margin-top: 8px;
   float: left;
-  width: 10%;
-  overflow: scroll;
+  width: 20%;
+  
   height: 518px;
+  overflow: visible;
+  
 }
+
+#information:hover {
+  opacity: 0.8;
+  transition: right 2s color 2s;
+  position: absolute;
+  right: 0%;
+  width: 20%;
+  z-index: 20;
+  background-color: lightgray;
+  
+}
+
+#pointer {
+  
+  position: absolute;
+  left: -20px;
+  width: 20px;
+  height: auto;
+  
+  margin-top: 200px;
+  
+}
+#information:hover #beforeHover{
+  display: none;
+}
+#information:hover #duringHover {
+  transition: 0s;
+  width: 90%;
+  padding-right: 0%;
+  display: block;
+}
+
+#beforeHover {
+  font-size: 40px;
+  padding-right: 40%;
+}
+
+#duringHover {
+  display: none;
+}
+
+
+#infoStart {
+  margin-top: 200px;
+}
+
 #graphBox {
   float: left;
   height: 520px;

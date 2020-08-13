@@ -1,6 +1,7 @@
 import Plot from './plot.js';
 import React from 'react';
 import Meter from './meter.js';
+import Arrow from './back.png';
 
 
 class Create extends React.Component{
@@ -111,16 +112,34 @@ class Create extends React.Component{
 
     render(){
        
-
+        
         if (!this.assigned){
             
             return (<>
                     <Meter allSick = {this.allSick} negativeNumbers = {this.negativeNumbers} positiveNumbers = {this.positiveNumbers} recoveredNumbers = {this.recoveredNumbers} deceasedNumbers = {this.deceasedNumbers}/>
 
                     <div id = "graphBox">
-                    <div id = "graphArea"></div>
-                    <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
+                        <div id = "graphArea"></div>
+                        <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
                     </div>
+                    <div id = "information">
+                        <img id = {"pointer"} src = {Arrow}></img>
+                        <div id = "beforeHover">
+                            <div id = "infoStart">I</div>
+                            <div>N</div>
+                            <div>F</div>
+                            <div>O</div>
+                        </div>
+
+                        <div id = "duringHover">
+                        Covid is a disease in which Covid is a disease in which Covid is a disease in which Covid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichvCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+                        </div>
+                    </div>
+       
             </>);
         }
        
@@ -136,11 +155,23 @@ class Create extends React.Component{
         <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
         </div>
 
-        <div id = "information">Covid is a disease in which Covid is a disease in which Covid is a disease in which Covid is a disease in which
+        <div id = "information">
+                        <img id = {"pointer"} src = {Arrow}></img>
+                        <div id = "beforeHover">
+                            <div id = "infoStart">I</div>
+                            <div>N</div>
+                            <div>F</div>
+                            <div>O</div>
+                        </div>
+
+                        <div id = "duringHover">
+                        Covid is a disease in which Covid is a disease in which Covid is a disease in which Covid is a disease in which
         Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
         Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
         Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
-        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichvCovid is a disease in whichCovid is a disease in whichCovid is a disease in which</div>
+        Covid is a disease in whichCovid is a disease in whichCovid is a disease in whichvCovid is a disease in whichCovid is a disease in whichCovid is a disease in which
+                        </div>
+                    </div>
         </>
         )
     }
