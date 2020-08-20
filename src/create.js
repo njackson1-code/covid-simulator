@@ -171,6 +171,7 @@ Shortness of breath or difficulty breathing
         <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
         </div>
 
+        <div id = "infoWrapper">
         <div id = "information">
                         <img id = {"pointer"} src = {Arrow}></img>
                         <div id = "beforeHover">
@@ -199,6 +200,8 @@ Shortness of breath or difficulty breathing
 
                         </div>
                     </div>
+                    </div>
+                    
         </>
         )
     }
