@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/covid-simulator/static/css/main.c00343c0.chunk.css",
-    "main.js": "/covid-simulator/static/js/main.3703efb9.chunk.js",
-    "main.js.map": "/covid-simulator/static/js/main.3703efb9.chunk.js.map",
+    "main.css": "/covid-simulator/static/css/main.276df26a.chunk.css",
+    "main.js": "/covid-simulator/static/js/main.db72c63a.chunk.js",
+    "main.js.map": "/covid-simulator/static/js/main.db72c63a.chunk.js.map",
     "runtime-main.js": "/covid-simulator/static/js/runtime-main.8af1a212.js",
     "runtime-main.js.map": "/covid-simulator/static/js/runtime-main.8af1a212.js.map",
     "static/js/2.177f8361.chunk.js": "/covid-simulator/static/js/2.177f8361.chunk.js",
     "static/js/2.177f8361.chunk.js.map": "/covid-simulator/static/js/2.177f8361.chunk.js.map",
     "index.html": "/covid-simulator/index.html",
-    "precache-manifest.5976b243c5d6d497d600ebb43e1e35a7.js": "/covid-simulator/precache-manifest.5976b243c5d6d497d600ebb43e1e35a7.js",
+    "precache-manifest.b20f4de7e25c9523bffd59d4b8588e48.js": "/covid-simulator/precache-manifest.b20f4de7e25c9523bffd59d4b8588e48.js",
     "service-worker.js": "/covid-simulator/service-worker.js",
-    "static/css/main.c00343c0.chunk.css.map": "/covid-simulator/static/css/main.c00343c0.chunk.css.map",
+    "static/css/main.276df26a.chunk.css.map": "/covid-simulator/static/css/main.276df26a.chunk.css.map",
     "static/js/2.177f8361.chunk.js.LICENSE.txt": "/covid-simulator/static/js/2.177f8361.chunk.js.LICENSE.txt",
     "static/media/angel.png": "/covid-simulator/static/media/angel.db2b3117.png",
     "static/media/company.png": "/covid-simulator/static/media/company.3d592e87.png",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.8af1a212.js",
     "static/js/2.177f8361.chunk.js",
-    "static/css/main.c00343c0.chunk.css",
-    "static/js/main.3703efb9.chunk.js"
+    "static/css/main.276df26a.chunk.css",
+    "static/js/main.db72c63a.chunk.js"
   ]
 }
