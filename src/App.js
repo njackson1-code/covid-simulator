@@ -13,7 +13,7 @@ function App() {
     <><div id = "overshadow"></div>
       <div className="App">
         <div id = "title">
-          Covid Visualizer
+          Covid-19 Simulation
         </div>
 
         <div id = "topBox">
