@@ -13,6 +13,7 @@ class Plot extends React.Component {
         this.nodes = []
         this.passNodes = []
         this.key = props.id;
+        this.perma = false;
 
         
         
@@ -148,7 +149,7 @@ class Plot extends React.Component {
 
     componentDidMount() {
         //this.updatePosition();
-        
+        this.perma = false;
         this.timerID = setInterval(
           () => this.update(),
           50
@@ -158,7 +159,10 @@ class Plot extends React.Component {
         
     }
     componentDidUpdate(prevProps) {
-        this.allSick = this.props.allSick;
+        if (this.props.allSick){
+            this.allSick = this.props.allSick;
+        }
+        
         if (this.key != this.props.id){
             this.setPing();
         }
@@ -386,8 +390,8 @@ class Plot extends React.Component {
                this.deceasedNumbers ++;
             }
         }
-        
-        if (sum == this.numOfNodes || untouched == 0 || (untouched + recov + this.deceasedNumbers == this.numOfNodes)){
+        this.message = "Immunity Reached. No one else to spread disease to."
+        if (sum == this.numOfNodes || untouched == 0 || (untouched + recov + this.deceasedNumbers == this.numOfNodes) || (sum + recov + this.deceasedNumbers == this.numOfNodes)){
             this.allSick = true;
             this.message = "Immunity Reached. No one else to spread disease to."
         } 
@@ -545,8 +549,11 @@ class Plot extends React.Component {
 
        
         
-        if (this.allSick){
+        if (this.allSick || this.perma){
+            
+            this.allSick = true;
             clearInterval(this.timerID);
+            console.log(this.message)
             document.getElementById("overshadow").style.display = 'block';
             document.getElementById("positiveMeter").style.height = "0px"
         document.getElementById("negativeMeter").style.height = "0px"
