@@ -60,7 +60,7 @@ code {
   
 }
 
-#information {
+#infoWrapper {
   transition: 2s;
   position: absolute;
   right: -10%;
@@ -70,15 +70,25 @@ code {
   
   height: 518px;
   
-  overflow-x: visible !important;
+  
 }
 
+
+#information {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+
+#infoWrapper {
+  overflow-x: visible !important;
+}
 
 #information div ul {
   text-decoration: underline;
 }
 
-#information:hover {
+#infoWrapper:hover {
   opacity: 0.8;
   transition: right 2s color 2s;
   position: absolute;

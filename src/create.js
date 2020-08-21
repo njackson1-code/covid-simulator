@@ -122,31 +122,26 @@ class Create extends React.Component{
                         <div id = "graphArea"></div>
                         <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
                     </div>
+
+                    <div id ="infoWrapper">
+                    <img id = {"pointer"} src = {Arrow}></img>
                     <div id = "information">
-                        <img id = {"pointer"} src = {Arrow}></img>
+                        
                         <div id = "beforeHover">
-                            <div id = "infoStart">S</div>
-                            <div>Y</div>
-                            <div>M</div>
-                            <div>P</div>
-                            <div>T</div>
+                            <div id = "infoStart">I</div>
+                            <div>N</div>
+                            <div>F</div>
                             <div>O</div>
-                            <div>M</div>
-                            <div>S</div>
                         </div>
 
                         <div id = "duringHover">
-                        Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19:
-Fever or chills
-Cough
-Shortness of breath or difficulty breathing
-<ul>Fatigue</ul>
-<ul>Muscle or body aches</ul>
-<ul>New loss of taste or smell</ul>
-<ul>Sore throat</ul>
-<ul>Congestion or runny nose</ul>
-<ul>Nausea or vomiting</ul>
-<ul>Diarrhea</ul>
+                        <ul>Inputs</ul>
+                        The header is to be used to add inputs to the simulation. It only has three inputs in order to make the simulation easy to use.
+
+                        <ul>Simulation details</ul>
+                        When the simulation is generated, it will simulate people moving within their community. When someone is in the bottom border labeled "Home", they cannot transmit the disease.
+                        Also, upon generation, a bar will appear on the left side of the screen which shows the number of people in each state (no covid, currently has covid, recovered, or deceased). 
+                        The simulation will stop when the disease can no longer be spread. That could mean herd immunity, or it could mean social distancing was effective in stoping the spread.
 
 
 
@@ -154,6 +149,7 @@ Shortness of breath or difficulty breathing
 
 
                         </div>
+                    </div>
                     </div>
        
             </>);
@@ -171,38 +167,37 @@ Shortness of breath or difficulty breathing
         <div id = "homeBorder">HOME (SOCIALLY DISTANCED)</div>
         </div>
 
-        <div id = "infoWrapper">
+        <div id ="infoWrapper">
+        <img id = {"pointer"} src = {Arrow}></img>
         <div id = "information">
-                        <img id = {"pointer"} src = {Arrow}></img>
+                        
                         <div id = "beforeHover">
-                            <div id = "infoStart">S</div>
-                            <div>Y</div>
-                            <div>M</div>
-                            <div>P</div>
-                            <div>T</div>
+                            <div id = "infoStart">I</div>
+                            <div>N</div>
+                            <div>F</div>
                             <div>O</div>
-                            <div>M</div>
-                            <div>S</div>
                         </div>
 
                         <div id = "duringHover">
-                        Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19:
-Fever or chills
-Cough
-Shortness of breath or difficulty breathing
-<ul>Fatigue</ul>
-<ul>Muscle or body aches</ul>
-<ul>New loss of taste or smell</ul>
-<ul>Sore throat</ul>
-<ul>Congestion or runny nose</ul>
-<ul>Nausea or vomiting</ul>
-<ul>Diarrhea</ul>
+                        <ul>Inputs</ul>
+                        The header is to be used to add inputs to the simulation. It only has three inputs in order to make the simulation easy to use.
+
+                        <ul>Simulation details</ul>
+                        When the simulation is generated, it will simulate people moving within their community. When someone is in the bottom border labeled "Home", they cannot transmit the disease.
+                        Also, upon generation, a bar will appear on the left side of the screen which shows the number of people in each state (no covid, currently has covid, recovered, or deceased). 
+                        The simulation will stop when the disease can no longer be spread. That could mean herd immunity, or it could mean social distancing was effective in stoping the spread.
+
+
+
+
+
 
                         </div>
                     </div>
                     </div>
-                    
+
         </>
+
         )
     }
 
